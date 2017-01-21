@@ -1,21 +1,24 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterModule} from "@angular/router";
 import {ProfileComponent} from "./profile.component";
+import { RouterModule, Routes } from '@angular/router';
 
-const profileRouting: ModuleWithProviders = RouterModule.forChild([
-    {
-        path: 'profile',
-        component: ProfileComponent
-    }
-]);
+
+import { EditComponent } from './edit/edit.component';
+
+
+
+const APP_ROUTES:Routes=[
+    {path:'profile',component:ProfileComponent},
+{path:'./profile/edit', component:EditComponent},
+];
 
 @NgModule({
     imports: [
         CommonModule,
-        profileRouting
+         RouterModule.forRoot(APP_ROUTES)
     ],
-    declarations: [ProfileComponent]
+    declarations: [ProfileComponent, EditComponent]
 })
 export class ProfileModule {
 }
