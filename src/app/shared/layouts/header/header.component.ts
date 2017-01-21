@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {AboutusComponent} from "../../../aboutus/aboutus.component";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
     selector: 'layout-header',
@@ -13,7 +12,7 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loggedIn = true;
+        this.loggedIn = false;
     }
 
 }
