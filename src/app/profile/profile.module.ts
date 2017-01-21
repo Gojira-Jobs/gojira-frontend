@@ -4,13 +4,10 @@ import {ProfileComponent} from "./profile.component";
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { EditComponent } from './edit/edit.component';
-
 
 
 const APP_ROUTES:Routes=[
     {path:'profile',component:ProfileComponent},
-{path:'./profile/edit', component:EditComponent},
 ];
 
 @NgModule({
@@ -18,7 +15,7 @@ const APP_ROUTES:Routes=[
         CommonModule,
          RouterModule.forRoot(APP_ROUTES)
     ],
-    declarations: [ProfileComponent, EditComponent]
+    declarations: [ProfileComponent]
 })
 export class ProfileModule {
 }
