@@ -13,13 +13,13 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">Find Job</a></li>
+                <li><a [routerLink]="['findjob']">Find Job</a></li>
                 <li><a [routerLink]="['aboutus']">About Us</a></li>
             </ul>
 
             <ul *ngIf="!loggedIn" class="nav navbar-nav navbar-right">
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Sign-Up</a></li>
+                <li><a [routerLink]="['login']">Login</a></li>
+                <li><a [routerLink]="['register']">Sign-Up</a></li>
             </ul>
             <ul *ngIf="loggedIn" class="nav navbar-nav navbar-right">
                 <li class="nav-item" style="float: right;">
