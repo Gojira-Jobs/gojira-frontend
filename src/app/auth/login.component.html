@@ -3,26 +3,26 @@
  <div class="col-md-6">
    <h1>Login</h1>
 <hr>
-   <form>
+   <form (ngSubmit)="onLogin()" [formGroup] = "loginForm">
   <div class="form-group">
     
-    <label for="InputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <label for="InputEmail">Email address</label>
+    <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" formControlName="loginEmail" placeholder="Enter email" >
      
 
-    <label for="exampleInputPassword1">Password</label>
+    <label for="InputPassword">Password</label>
    
- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+ <input type="password" class="form-control" id="InputPassword" placeholder="Password" formControlName="loginPassword">
  
   </div>
   
   <div class="form-check">
     <label class="form-check-label">
-      <input type="checkbox" class="form-check-input">
+      <input type="checkbox" class="form-check-input" formControlName="rememberMe">
       Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Log In</button>
 </form>
 </div>
 </div>
