@@ -8,10 +8,9 @@ import {ProfileService} from './profile.service';
                 
                 <hr class="w3-clear">
                 <h6>Candidate Name : {{details[0]}} </h6>
-                <h6>Date of Birth : {{details[1]}} </h6>
-                <h6>Gender : {{details[2]}} </h6> 
-                <h6>Email Id : {{details[3]}} </h6>
-                <h6>Contact no : {{details[4]}} </h6>
+                <h6>Date of Birth : {{details[1]}} </h6> 
+                <h6>Email Id : {{details[2]}} </h6>
+                <h6>Contact no : {{details[3]}} </h6>
                 <hr class="w3-clear">
   
   `
