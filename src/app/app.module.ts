@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule, ModuleWithProviders} from "@angular/core";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./shared/layouts/header/header.component";
@@ -29,7 +29,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
         ProfileModule,
         AuthModule,
         SharedModule,
-        rootRouting
+        rootRouting,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
