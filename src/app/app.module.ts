@@ -10,6 +10,7 @@ import {FindjobModule} from "./findjob/findjob.module";
 import {ProfileModule} from "./profile/profile.module";
 import {AboutusModule} from "./aboutus/aboutus.module";
 import {AuthModule} from "./auth/auth.module";
+import {SharedModule} from "./shared/shared.module";
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
 
@@ -27,6 +28,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
         AboutusModule,
         ProfileModule,
         AuthModule,
+        SharedModule,
         rootRouting
     ],
     providers: [],
