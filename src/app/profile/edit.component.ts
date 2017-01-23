@@ -7,18 +7,17 @@ import {Router} from '@angular/router';
 })
 export class EditComponent implements OnInit {
 
-  constructor(private prf:ProfileService,private router:Router) { }
-details:string[];
-val:string;
+  constructor(private prf:ProfileService,private router:Router) {
+   }
+details:any [];
   ngOnInit() {
     this.details=this.prf.getDetails();
-    this.val="hello";
+    
   }
   load()
 {
   this.router.navigate(['profile']);
-
-  }
+}
   
   
 
