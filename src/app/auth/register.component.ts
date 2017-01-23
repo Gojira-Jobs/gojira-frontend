@@ -30,8 +30,6 @@ export class RegisterComponent {
   	this.user.name = value.name;
   	this.user.email = value.email;
   	this.user.password = value.password;
-
-  	console.log(this.user);
   }
   
 }
