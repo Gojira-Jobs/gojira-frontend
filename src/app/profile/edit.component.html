@@ -12,11 +12,7 @@
       <label for="dob"><h6>Date of Birth </h6></label>
       <input type="date" class="form-control" id="date" >
     </div>
-    <div class="form-group checkbox">
-      <label for="Gender"><h6>Gender </h6></label>
-      <label><input type="radio"> Male</label>
-      <label><input type="radio"> Female</label>
-    </div>
+   
     <div class="form-group">
       <label for="email"><h6>Email </h6></label>
       <input type="email" class="form-control" id="email" >
@@ -25,7 +21,7 @@
       <label for="Contact"><h6> Contact No </h6></label>
       <input type="number" class="form-control" id="date">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="button" class="btn btn-default" (click)="load()">Submit</button>
   </form>
 
 <hr class="w3-clear">

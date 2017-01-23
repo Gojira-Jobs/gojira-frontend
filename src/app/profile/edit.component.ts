@@ -16,7 +16,7 @@ val:string;
   }
   load()
 {
-  this.router.navigate(['']);
+  this.router.navigate(['profile']);
 
   }
   
