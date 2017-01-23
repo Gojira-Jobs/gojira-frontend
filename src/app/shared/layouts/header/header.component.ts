@@ -1,4 +1,6 @@
 import {Component, OnInit} from "@angular/core";
+import {Observable} from "rxjs";
+import {UserService} from "../../services/user.service";
 
 @Component({
     selector: 'layout-header',
@@ -6,13 +8,14 @@ import {Component, OnInit} from "@angular/core";
 })
 export class HeaderComponent implements OnInit {
 
-    loggedIn: boolean = false;
+    loggedIn: Observable<boolean>;
 
-    constructor() {
+    constructor(userService : UserService) {
+        this.loggedIn = userService.isLoggedIn();
     }
 
     ngOnInit() {
-        this.loggedIn = false;
+
     }
 
 }
