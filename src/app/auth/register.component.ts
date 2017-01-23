@@ -5,10 +5,9 @@ import { CustomValidators } from 'ng2-validation';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './signup-form.component.html',
-  styleUrls: ['./signup-form.component.css']
+  templateUrl: './register.component.html'
 })
-export class SignupFormComponent {
+export class RegisterComponent {
 	signupForm : FormGroup;
 
 	constructor(fb: FormBuilder){
