@@ -3,6 +3,7 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {LoginComponent} from "./login.component";
 import {RegisterComponent} from "./register.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const authRouting: ModuleWithProviders = RouterModule.forChild([
     {
@@ -17,7 +18,9 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
 @NgModule({
     imports: [
         CommonModule,
-        authRouting
+        authRouting,
+        FormsModule, 
+        ReactiveFormsModule
     ],
     declarations: [LoginComponent, RegisterComponent]
 })
