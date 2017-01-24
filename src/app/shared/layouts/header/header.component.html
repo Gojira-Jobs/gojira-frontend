@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Gojira Jobs</a>
+            <a class="navbar-brand" href="">Gojira Jobs</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -24,16 +24,17 @@
             <ul *ngIf="(loggedIn | async)" class="nav navbar-nav navbar-right">
                 <li class="nav-item" style="float: right;">
 
-       <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Rahul
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a [routerLink]="['profile']">View Profile</a></li>
-      <li><a [routerLink]="#">Logout</a></li>
-    </ul>
-  </div>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button"
+                                data-toggle="dropdown">Rahul
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a [routerLink]="['profile']">View Profile</a></li>
+                            <li><a [routerLink]="">Logout</a></li>
+                        </ul>
+                    </div>
 
-                  
+
                 </li>
             </ul>
         </div>
