@@ -40,7 +40,7 @@ export class UserService {
         this.isAuthenticatedSubject.next(true);
     }
 
-    private purgeAuth() {
+    public purgeAuth() {
         //delete token from into local storage
         this.jwtService.destroyToken();
 
@@ -50,7 +50,7 @@ export class UserService {
         this.isAuthenticatedSubject.next(false);
     }
 
-    isLoggedIn(): Observable<boolean> {
+    public isLoggedIn(): Observable<boolean> {
         return this.isAuthenticatedSubject.asObservable();
     }
 
