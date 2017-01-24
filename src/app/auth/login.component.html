@@ -5,30 +5,34 @@
         <hr>
 
         <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
-            <div class="form-group">
+            <fieldset [disabled]="isSubmitting">
+                <fieldset class="form-group">
+                    <div class="form-group">
 
-                <label for="InputEmail">Email address</label>
-                <input type="email" class="form-control" id="InputEmail"
-                       aria-describedby="emailHelp" formControlName="email" placeholder="Enter email">
+                        <label for="InputEmail">Email address</label>
+                        <input type="email" class="form-control" id="InputEmail"
+                               aria-describedby="emailHelp" formControlName="email" placeholder="Enter email">
 
-                <label for="InputPassword">Password</label>
+                        <label for="InputPassword">Password</label>
 
-                <input type="password" class="form-control"
-                       id="InputPassword" placeholder="Password" formControlName="password">
+                        <input type="password" class="form-control"
+                               id="InputPassword" placeholder="Password" formControlName="password">
 
-            </div>
+                    </div>
 
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" formControlName="rememberMe">
-                    Remember me
-                </label>
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" formControlName="isHr">
-                    Are you a HR?
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Log In</button>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" formControlName="rememberMe">
+                            Remember me
+                        </label>
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" formControlName="isHr">
+                            Are you a HR?
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Log In</button>
+                </fieldset>
+            </fieldset>
         </form>
     </div>
 </div>
