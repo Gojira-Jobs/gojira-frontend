@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
         this.loginForm = fb.group({
             'email': [null, Validators.required],
             'password': [null, Validators.required],
-            'rememberMe': [false, Validators.required]
+            'rememberMe': [false, Validators.required],
+            'isHr': [false, Validators.required]
         });
     }
 
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
     onLogin() {
         let credentials = this.loginForm.value;
         this.errors = new Errors();
+        //TODO implement
         this.isSubmitting = true;
 
         console.log(credentials);
@@ -36,8 +38,8 @@ export class LoginComponent implements OnInit {
                     this.router.navigateByUrl('/');
                 },
                 err => {
+                    //TODO error handling
                     this.errors = err;
-                    console.log('i am having issues ' + err);
                     this.isSubmitting = false;
                 });
     }

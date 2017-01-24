@@ -10,12 +10,18 @@ export class HeaderComponent implements OnInit {
 
     loggedIn: Observable<boolean>;
 
-    constructor(userService: UserService) {
+    constructor(private userService: UserService) {
         this.loggedIn = userService.isLoggedIn();
+        this.loggedIn.subscribe((data => {
+        }));
     }
 
     ngOnInit() {
+    }
 
+    logout() {
+        console.log('logging out current user ');
+        this.userService.purgeAuth();
     }
 
 }
