@@ -8,6 +8,7 @@ import {User} from "../models/user";
 export class UserService {
 
     private loginEndPoint = "/authenticate";
+    private registerEndpoint = "/register";
 
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
@@ -38,6 +39,19 @@ export class UserService {
         localStorage.setItem('email', user.email);
         localStorage.setItem('user', user.name);
         this.isAuthenticatedSubject.next(true);
+    }
+
+    public register(user: User) {
+        return this.apiService.post(this.registerEndpoint, user)
+            .map(data => {
+                if (data.success) {
+                    this.setAuth(data.data);
+                    return data.data;
+                } else {
+                    this.purgeAuth();
+                    return data.data;
+                }
+            });
     }
 
     public purgeAuth() {
