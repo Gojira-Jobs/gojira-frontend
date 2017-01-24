@@ -9,6 +9,7 @@ export class UserService {
     constructor(private apiService: ApiService,
                 private http: Http,
                 private jwtService: JwtService) {
+    
     }
 
 
