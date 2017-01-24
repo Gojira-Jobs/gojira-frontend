@@ -4,7 +4,7 @@ import {ProfileComponent} from "./profile.component";
 import { RouterModule, Routes } from '@angular/router';
 import { UserdetailsComponent } from './userdetails.component';
 import {EditComponent} from './edit.component';
-
+import { ImageUploadModule } from 'ng2-imageupload';
 
 
 const APP_ROUTES:Routes=[
@@ -27,7 +27,8 @@ const APP_ROUTES:Routes=[
 @NgModule({
     imports: [
         CommonModule,
-         RouterModule.forRoot(APP_ROUTES)
+         RouterModule.forRoot(APP_ROUTES),
+         ImageUploadModule 
     ],
     declarations: [ProfileComponent, UserdetailsComponent,EditComponent]
 })
