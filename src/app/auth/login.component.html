@@ -3,16 +3,18 @@
  <div class="col-md-6">
    <h1>Login</h1>
 <hr>
+
    <form (ngSubmit)="onLogin()" [formGroup] = "loginForm">
   <div class="form-group">
     
     <label for="InputEmail">Email address</label>
-    <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" formControlName="loginEmail" placeholder="Enter email" >
-     
+    <input type="email" class="form-control" id="InputEmail"
+           aria-describedby="emailHelp" formControlName="email" placeholder="Enter email" >
 
     <label for="InputPassword">Password</label>
    
- <input type="password" class="form-control" id="InputPassword" placeholder="Password" formControlName="loginPassword">
+ <input type="password" class="form-control"
+        id="InputPassword" placeholder="Password" formControlName="password">
  
   </div>
   

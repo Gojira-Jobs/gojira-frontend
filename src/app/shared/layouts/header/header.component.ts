@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
     loggedIn: Observable<boolean>;
 
-    constructor(userService : UserService) {
+    constructor(userService: UserService) {
         this.loggedIn = userService.isLoggedIn();
     }
 
