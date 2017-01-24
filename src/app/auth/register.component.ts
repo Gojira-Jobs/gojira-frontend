@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { User } from '../shared/models/user';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { CustomValidators } from 'ng2-validation';
+import {Component} from "@angular/core";
+import {User} from "../shared/models/user";
+import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
+import {CustomValidators} from "ng2-validation";
 
 @Component({
   selector: 'app-register',
@@ -24,12 +24,12 @@ export class RegisterComponent {
 		});
 	}
 
-  user = new User;
+    user = new User;
 
   onSubmit(value : any){
   	this.user.name = value.name;
   	this.user.email = value.email;
   	this.user.password = value.password;
   }
-  
+
 }

@@ -11,15 +11,16 @@ import {ProfileModule} from "./profile/profile.module";
 import {AboutusModule} from "./aboutus/aboutus.module";
 import {AuthModule} from "./auth/auth.module";
 import {SharedModule} from "./shared/shared.module";
-import { AlertComponent } from './alert/alert/alert.component';
+import {JwtService} from "./shared/services/jwt.service";
+import {UserService} from "./shared/services/user.service";
+import {ApiService} from "./shared/services/api.service";
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
 
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderComponent,
-        AlertComponent
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
@@ -34,7 +35,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
         rootRouting,
         ReactiveFormsModule
     ],
-    providers: [],
+    providers: [JwtService, UserService, ApiService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
