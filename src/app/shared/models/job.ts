@@ -11,3 +11,4 @@ export class Job {
     workPlace: string;
     postedBy: string;
 }
+

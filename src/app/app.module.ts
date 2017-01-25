@@ -14,6 +14,7 @@ import {SharedModule} from "./shared/shared.module";
 import {JwtService} from "./shared/services/jwt.service";
 import {UserService} from "./shared/services/user.service";
 import {ApiService} from "./shared/services/api.service";
+import {JobListingService} from "./shared/services/jobListing.service";
 import {HrModule} from "./HR/hr.module";
 import {HrportalService} from "./shared/services/hrportal.service";
 
@@ -39,7 +40,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
         ReactiveFormsModule,
         HrModule
     ],
-    providers: [JwtService, UserService, ApiService, HrportalService],
+    providers: [JwtService, UserService, ApiService,HrportalService, JobListingService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

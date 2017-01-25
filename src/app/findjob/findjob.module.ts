@@ -2,6 +2,7 @@ import {NgModule, ModuleWithProviders} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {FindjobComponent} from "./findjob.component";
+import {FormsModule} from "@angular/forms";
 
 const findjobRouting: ModuleWithProviders = RouterModule.forChild([
     {
@@ -13,7 +14,8 @@ const findjobRouting: ModuleWithProviders = RouterModule.forChild([
 @NgModule({
     imports: [
         CommonModule,
-        findjobRouting
+        findjobRouting,
+         FormsModule
     ],
     declarations: [FindjobComponent]
 })
