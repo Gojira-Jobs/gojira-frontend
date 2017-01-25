@@ -1,13 +1,14 @@
 export class Job {
-    jobid: string;
+    job_id: string;
     category: string;
     title: string;
     description: string;
-    ageLimit: string;
-    workExp: string;
-    eduDetails: string;
-    lastDate: string;
-    joiningDate: string;
-    workPlace: string;
+    AgeLimit: string;
+    WorkExp: string;
+    EduDetails: string;
+    last_date = new Date("YYYY/MM/DD");
+    Joining =  new Date("YYYY/MM/DD");
+    WorkPlace: string;
     postedBy: string;
+    
 }

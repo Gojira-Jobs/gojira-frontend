@@ -4,6 +4,7 @@ import {HrportalComponent} from './hrportal.component';
 import {RouterModule, Routes} from '@angular/router';
 import {JobComponent} from './jobpost.component';
 import {FormsModule,ReactiveFormsModule} from "@angular/forms";
+
 const HR_ROUTES: Routes = [
     {
         path: 'hr', component: HrportalComponent,
@@ -11,7 +12,9 @@ const HR_ROUTES: Routes = [
         {
             path:'',
             component: JobComponent
-        }]
+        }
+        
+        ]
         
     }
 ];

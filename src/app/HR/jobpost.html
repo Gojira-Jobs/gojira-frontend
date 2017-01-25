@@ -1,13 +1,17 @@
 
-  <h2>Job post Form</h2>
-  <form (ngSubmit)="onSubmit()" #f="ngForm">
+<div class="alert alert-success" [(class.hidden)]="!val">
+    <strong>Success!</strong> You  <a href="#" class="alert-link">posted a job</a>.
+  </div>
+
+  <h2 [(class.hidden)]="val">Job post Form</h2>
+  <form (ngSubmit)="onSubmit()" #f="ngForm" [(class.hidden)]="val" >
     <div class="form-group">
       <label for="JobId">JobId</label>
-      <input type="text" class="form-control" id="email"  [(ngModel)]="job.jobid" name="jobid" placeholder="Enter Job Id">
+      <input type="text" class="form-control" id="email"  [(ngModel)]="job.job_id" name="job_id" placeholder="Enter Job Id">
     </div>
     <div class="form-group">
       <label for="Catagory">Catagory</label>
-      <select class="form-control">
+      <select class="form-control" [(ngModel)]="job.category" name="category">
           <option>It</option>
           <option>Maintainance</option>
           <option>Buisness Administration</option>
@@ -23,27 +27,27 @@
     </div>
      <div class="form-group">
       <label for="pwd">Age Limit:</label>
-      <input type="text" class="form-control" [(ngModel)]="job.ageLimit" name="ageLimit" placeholder="Enter age Limit">
+      <input type="text" class="form-control" [(ngModel)]="job.AgeLimit" name="AgeLimit" placeholder="Enter age Limit">
     </div>
      <div class="form-group">
       <label for="text">Work Experience:</label>
-      <input type="text" class="form-control" [(ngModel)]="job.workExp" name="workExp" placeholder="Work Experience">
+      <input type="text" class="form-control" [(ngModel)]="job.WorkExp" name="WorkExp" placeholder="Work Experience">
     </div>
      <div class="form-group">
       <label for="pwd">Education Details:</label>
-      <input type="text" class="form-control" [(ngModel)]="job.eduDetails" name="eduDetails" placeholder="Education Details">
+      <input type="text" class="form-control" [(ngModel)]="job.EduDetails" name="EduDetails" placeholder="Education Details">
     </div>
      <div class="form-group">
       <label for="pwd">Last Date of apply:</label>
-      <input type="text" class="form-control" [(ngModel)]="job.lastDate" name="lastDate" placeholder="Last Date">
+      <input type="date" class="form-control" [(ngModel)]="job.last_date" name="last_date" placeholder="Last Date">
     </div>
      <div class="form-group">
       <label for="pwd">Joining Date:</label>
-      <input type="text" class="form-control" [(ngModel)]="job.joiningDate" name="JoiningDate" placeholder="Joining Date">
+      <input type="date" class="form-control" [(ngModel)]="job.Joining" name="Joining" placeholder="Joining Date">
     </div>
      <div class="form-group">
       <label for="pwd">Work place</label>
-      <input type="text" class="form-control" [(ngModel)]="job.workPlace" name="workPlace" placeholder="Work place">
+      <input type="text" class="form-control" [(ngModel)]="job.WorkPlace" name="WorkPlace" placeholder="Work place">
     </div>
      <div class="form-group">
       <label for="pwd">Post By:</label>
@@ -52,3 +56,4 @@
     
     <button type="submit" class="btn btn-default" [disabled]="!f.valid">Submit</button>
   </form>
+ 
