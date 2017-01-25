@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./shared/layouts/header/header.component";
-import {LandingModule} from "./landing/landing.module";
+import {HomeModule} from "./Home/home.module";
 import {RouterModule} from "@angular/router";
 import {FindjobModule} from "./findjob/findjob.module";
 import {ProfileModule} from "./profile/profile.module";
@@ -24,13 +24,12 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
     declarations: [
         AppComponent,
         HeaderComponent,
-    
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        LandingModule,
+        HomeModule,
         FindjobModule,
         AboutusModule,
         ProfileModule,
@@ -40,7 +39,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
         ReactiveFormsModule,
         HrModule
     ],
-    providers: [JwtService, UserService, ApiService,HrportalService],
+    providers: [JwtService, UserService, ApiService, HrportalService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -39,7 +39,6 @@ export class UserService {
     public register(user: User) {
         return this.apiService.post(this.registerEndpoint, user)
             .map(data => {
-                this.setAuth(data.data);
                 return data.data;
             });
     }
