@@ -1,13 +1,13 @@
 export class Job {
-    job_id: string;
+    jobid: string;
     category: string;
     title: string;
     description: string;
     ageLimit: string;
     workExp: string;
     eduDetails: string;
-    lastDate: Date;
-    joiningDate: Date;
+    lastDate: string;
+    joiningDate: string;
     workPlace: string;
     postedBy: string;
 }

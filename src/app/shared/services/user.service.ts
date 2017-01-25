@@ -8,6 +8,7 @@ import {User} from "../models/user";
 export class UserService {
 
     private loginEndPoint = "/authenticate";
+    private registerEndpoint = "/register";
 
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
@@ -18,18 +19,13 @@ export class UserService {
 
     login(credentials: User) {
         return this.apiService.post(this.loginEndPoint, credentials)
-            .map(data => {
-                if (data.success) {
-                    this.setAuth(data.data);
-                    return data.data;
-                } else {
-                    this.purgeAuth();
-                    return data.data;
-                }
+            .map(res => {
+                this.setAuth(res.data);
+                return res.data;
             });
     }
 
-    private setAuth(user: User) {
+    public setAuth(user: User) {
         //save token into local storage
         this.jwtService.saveToken(user.token);
 
@@ -40,7 +36,15 @@ export class UserService {
         this.isAuthenticatedSubject.next(true);
     }
 
-    private purgeAuth() {
+    public register(user: User) {
+        return this.apiService.post(this.registerEndpoint, user)
+            .map(data => {
+                this.setAuth(data.data);
+                return data.data;
+            });
+    }
+
+    public purgeAuth() {
         //delete token from into local storage
         this.jwtService.destroyToken();
 
@@ -50,7 +54,7 @@ export class UserService {
         this.isAuthenticatedSubject.next(false);
     }
 
-    isLoggedIn(): Observable<boolean> {
+    public isLoggedIn(): Observable<boolean> {
         return this.isAuthenticatedSubject.asObservable();
     }
 

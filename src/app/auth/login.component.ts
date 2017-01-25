@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
         this.loginForm = fb.group({
             'email': [null, Validators.required],
             'password': [null, Validators.required],
-            'rememberMe': [false, Validators.required]
+            'rememberMe': [false, Validators.required],
+            'isHr': [false, Validators.required]
         });
     }
 
@@ -36,8 +37,10 @@ export class LoginComponent implements OnInit {
                     this.router.navigateByUrl('/');
                 },
                 err => {
+                    //TODO error handling
+                    console.log(err.msg);
+                    this.userService.purgeAuth();
                     this.errors = err;
-                    console.log('i am having issues ' + err);
                     this.isSubmitting = false;
                 });
     }
