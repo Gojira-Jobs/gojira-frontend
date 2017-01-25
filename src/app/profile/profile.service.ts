@@ -6,7 +6,7 @@ export class ProfileService {
 details: User={
 	"uid":1233,
 	"name":"Prahllad Roy",
-	"dob":"05/30/1993",
+	"dob":new Date(1995/1/19),
 	"email":"prahllad.x@venturepact.com",
 	"mobile":"8974274851",
 	"token": "string",
@@ -24,7 +24,7 @@ details: User={
     	"state": "string",
     	"pincode": "243006"
 		}
-	};
+};
 getDetails()
 {
   return this.details;
@@ -32,7 +32,7 @@ getDetails()
 
 postDetails(user : User){
 	console.log(user);
-	this.details=user
+	this.details=user;
 	
 } 
 }
