@@ -10,7 +10,7 @@ export class User {
     high_qual: string;
     high_qual_perc: number;
     pursuing_status: boolean;
-    dob: string;
+    dob: Date;
     gender: string;
     resume: string;
     picture: string;

@@ -30,7 +30,9 @@ export class ApiService {
         return this.http.get(`${environment.api_url}${path}`, {
             headers: this.setHeaders(),
             search: params
-        }).catch(this.formatErrors).map((res: Response) => res.json());
+    }).catch(this.formatErrors).map((res: Response) =>{ 
+        console.log(res.json());
+        return res.json();});
     }
 
     post(path: string, body: Object = {}): Observable<any> {

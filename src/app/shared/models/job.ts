@@ -12,3 +12,4 @@ export class Job {
     postedBy: string;
     
 }
+

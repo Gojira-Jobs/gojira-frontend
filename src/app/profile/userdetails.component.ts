@@ -9,7 +9,7 @@ import { User } from '../shared/models/user';
                 
                 <hr class="w3-clear">
                 <h6>Candidate Name : {{details.name}} </h6>
-                <h6>Date of Birth : {{details.dob}} </h6>
+                <h6>Date of Birth : {{details.dob |  date: 'yyyy/MM/dd'}} </h6>
                 <h6>Gender : {{details.gender}} </h6> 
                 <h6>Email Id : {{details.email}} </h6>
                 <h6>Contact no : {{details.mobile}} </h6>
@@ -21,7 +21,7 @@ import { User } from '../shared/models/user';
 export class UserdetailsComponent implements OnInit {
 
   constructor(private profile: ProfileService,) { }
-details: User;
+  details: User;
   ngOnInit() {
     this.details=this.profile.getDetails();
   }

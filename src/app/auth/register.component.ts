@@ -33,6 +33,7 @@ export class RegisterComponent {
     user = new User;
 
     onSubmit(value: any) {
+
         this.user.name = value.name;
         this.user.email = value.email;
         this.user.password = value.password;
@@ -42,9 +43,13 @@ export class RegisterComponent {
 
         this.userService.register(this.user)
             .subscribe(data => {
-                this.router.navigateByUrl('/');
+                //set login using new data
+                this.userService.setAuth(data);
+
+                this.router.navigateByUrl('/profile');
             }, err => {
                 //TODO error handling
+                console.log(err.msg);
                 this.errors = err;
                 this.isSubmitting = false;
             });
