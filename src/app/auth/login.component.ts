@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     onLogin() {
         let credentials = this.loginForm.value;
         this.errors = new Errors();
-        //TODO implement
         this.isSubmitting = true;
 
         console.log(credentials);
@@ -39,6 +38,8 @@ export class LoginComponent implements OnInit {
                 },
                 err => {
                     //TODO error handling
+                    console.log(err.msg);
+                    this.userService.purgeAuth();
                     this.errors = err;
                     this.isSubmitting = false;
                 });

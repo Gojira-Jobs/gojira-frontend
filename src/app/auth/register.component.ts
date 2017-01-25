@@ -41,10 +41,11 @@ export class RegisterComponent {
         this.isSubmitting = true;
 
         this.userService.register(this.user)
-            .subscribe(data => {
-                this.router.navigateByUrl('/');
+            .subscribe(res => {
+                this.router.navigateByUrl('/profile');
             }, err => {
                 //TODO error handling
+                console.log(err.msg);
                 this.errors = err;
                 this.isSubmitting = false;
             });

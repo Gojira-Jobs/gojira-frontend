@@ -19,18 +19,13 @@ export class UserService {
 
     login(credentials: User) {
         return this.apiService.post(this.loginEndPoint, credentials)
-            .map(data => {
-                if (data.success) {
-                    this.setAuth(data.data);
-                    return data.data;
-                } else {
-                    this.purgeAuth();
-                    return data.data;
-                }
+            .map(res => {
+                this.setAuth(res.data);
+                return res.data;
             });
     }
 
-    private setAuth(user: User) {
+    public setAuth(user: User) {
         //save token into local storage
         this.jwtService.saveToken(user.token);
 
@@ -44,13 +39,8 @@ export class UserService {
     public register(user: User) {
         return this.apiService.post(this.registerEndpoint, user)
             .map(data => {
-                if (data.success) {
-                    this.setAuth(data.data);
-                    return data.data;
-                } else {
-                    this.purgeAuth();
-                    return data.data;
-                }
+                this.setAuth(data.data);
+                return data.data;
             });
     }
 
