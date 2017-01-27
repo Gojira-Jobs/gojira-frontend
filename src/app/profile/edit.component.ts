@@ -11,12 +11,14 @@ import { Input } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 	profileForm : FormGroup;
-  	@Input() details: User;
-  	constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
-  		this.details=this.prf.getDetails();
+  details: User;
+  constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
+  	
+    this.details=this.prf.getDetails();
+
   	this.profileForm = fb.group({
-	'name' : [this.details.name, Validators.required],
-	'email' : [this.details.email, Validators.required],
+	  'name' : [this.details.name, Validators.required],
+	  'email' : [this.details.email, Validators.required],
     'pursuing' : [this.details.pursuing_status],
     'high_qual' : [this.details.high_qual, Validators.required],
     'dob' : [this.details.dob, Validators.required],

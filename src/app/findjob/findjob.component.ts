@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Job } from '../shared/models/job';
 import { JobListingService } from '../shared/services/jobListing.service';
 
@@ -15,6 +15,10 @@ import { JobListingService } from '../shared/services/jobListing.service';
 export class FindjobComponent implements OnInit {
 job : Job[]=[];
 listFilter:string;
+public visible = false;
+  private visibleAnimate = false;
+  selectedJob: Job;
+
    constructor(private jobList : JobListingService) { }
 
   ngOnInit() {
@@ -24,6 +28,21 @@ listFilter:string;
     });
   }
 
+apply(){
+  this.jobList.applyJob();
+}
+
+
+  public show(job:Job): void {
+    this.selectedJob=job;
+    this.visible = true;
+    setTimeout(() => this.visibleAnimate = true);
+  }
+
+  public hide(): void {
+    this.visibleAnimate = false;
+    setTimeout(() => this.visible = false, 300);
+  }
 
 /*search(){
 console.log(this.listFilter);

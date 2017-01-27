@@ -16,7 +16,6 @@ import { User } from '../shared/models/user';
                 <hr class="w3-clear">
   
   `
-  
 })
 export class UserdetailsComponent implements OnInit {
 
