@@ -4,6 +4,7 @@ import {RouterModule} from "@angular/router";
 import {LoginComponent} from "./login.component";
 import {RegisterComponent} from "./register.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {SharedModule} from "../shared/shared.module";
 
 const authRouting: ModuleWithProviders = RouterModule.forChild([
     {
@@ -19,8 +20,9 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
     imports: [
         CommonModule,
         authRouting,
-        FormsModule, 
-        ReactiveFormsModule
+        FormsModule,
+        ReactiveFormsModule,
+        SharedModule
     ],
     declarations: [LoginComponent, RegisterComponent]
 })

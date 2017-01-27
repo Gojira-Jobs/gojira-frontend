@@ -3,7 +3,6 @@ import {User} from "../shared/models/user";
 import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
 import {CustomValidators} from "ng2-validation";
 import {UserService} from "../shared/services/user.service";
-import {Errors} from "../shared/models/Error";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent {
 
-    errors: Errors = new Errors();
+    error: string;
     isSubmitting: boolean = false;
     signupForm: FormGroup;
 
@@ -38,7 +37,6 @@ export class RegisterComponent {
         this.user.email = value.email;
         this.user.password = value.password;
 
-        this.errors = new Errors();
         this.isSubmitting = true;
 
         this.userService.register(this.user)
@@ -48,9 +46,8 @@ export class RegisterComponent {
 
                 this.router.navigateByUrl('/profile');
             }, err => {
-                //TODO error handling
-                console.log(err.msg);
-                this.errors = err;
+                console.log(JSON.stringify(err));
+                this.error = err.msg;
                 this.isSubmitting = false;
             });
     }
