@@ -1,17 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {ProfileService} from './profile.service';
-import {Router} from '@angular/router';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { User } from '../shared/models/user';
-import { Address } from '../shared/models/address';
-import { Input } from '@angular/core';
+import {Component, OnInit, Input} from "@angular/core";
+import {ProfileService} from "./profile.service";
+import {Router} from "@angular/router";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {User} from "../shared/models/user";
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html'
 })
 export class EditComponent implements OnInit {
 	profileForm : FormGroup;
-  	@Input() details: User;
+    @Input() details: User;
   	constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
   		this.details=this.prf.getDetails();
   	this.profileForm = fb.group({

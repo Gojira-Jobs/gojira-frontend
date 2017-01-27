@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { User } from '../shared/models/user';
+import {Injectable} from "@angular/core";
+import {User} from "../shared/models/user";
 
 @Injectable()
 export class ProfileService {
 details: User={
 	"uid":1233,
 	"name":"Prahllad Roy",
-	"dob":new Date(1995/1/19),
+    "dob": new Date(1995 / 1 / 19),
 	"email":"prahllad.x@venturepact.com",
 	"mobile":"8974274851",
 	"token": "string",
@@ -32,7 +32,7 @@ getDetails()
 
 postDetails(user : User){
 	console.log(user);
-	this.details=user;
+    this.details = user;
 	
 } 
 }

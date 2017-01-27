@@ -19,10 +19,9 @@ const HR_ROUTES: Routes = [
         
         ]
         
-    },
+    }
     
-       {path:'hr',component:HrportalComponent}
-    
+      
 ];
 @NgModule({
   imports: [

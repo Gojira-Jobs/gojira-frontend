@@ -1,16 +1,16 @@
 <style>
-.cs
-{
-  margin-left: 20%;
-  margin-right: auto;
-  width: 60%;
-  box-shadow: 10px 10px 10px white;
-}
+    .cs {
+        margin-left: 20%;
+        margin-right: auto;
+        width: 60%;
+        box-shadow: 10px 10px 10px white;
+    }
 </style>
 
 <div class="col-md-12 cs">
     <h1>Sign Up</h1>
     <hr>
+    <error-list [error]="error"></error-list>
     <form (ngSubmit)="onSubmit(signupForm.value)" [formGroup]="signupForm">
         <fieldset [disabled]="isSubmitting">
             <fieldset class="form-group">
