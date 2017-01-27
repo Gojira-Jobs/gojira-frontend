@@ -39,7 +39,13 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
         ReactiveFormsModule,
         HrModule
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers:[UserService,
+    ApiService,
+    JobListingService,
+    JwtService
+    ]
+
 })
 export class AppModule {
 }
