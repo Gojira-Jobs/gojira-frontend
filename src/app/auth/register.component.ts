@@ -46,7 +46,6 @@ export class RegisterComponent {
 
                 this.router.navigateByUrl('/profile');
             }, err => {
-                console.log(JSON.stringify(err));
                 this.error = err.msg;
                 this.isSubmitting = false;
             });

@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Observable} from "rxjs";
 import {UserService} from "../services/user.service";
+import {User} from "../models/user";
 
 @Component({
     selector: 'layout-header',
@@ -9,18 +10,22 @@ import {UserService} from "../services/user.service";
 export class HeaderComponent implements OnInit {
 
     loggedIn: Observable<boolean>;
+    currentUser: User;
 
     constructor(private userService: UserService) {
-        this.loggedIn = userService.isLoggedIn();
-        this.loggedIn.subscribe((data => {
-        }));
     }
 
     ngOnInit() {
+        this.loggedIn = this.userService.isLoggedIn();
+
+        this.userService.getCurrentUser()
+            .subscribe(user => {
+                console.log('user changed to ' + JSON.stringify(user));
+                this.currentUser = user
+            });
     }
 
     logout() {
-        console.log('logging out current user ');
         this.userService.purgeAuth();
     }
 

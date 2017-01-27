@@ -17,7 +17,7 @@ export class ApiService {
             'Accept': 'application/json'
         };
         if (this.jwtService.getToken()) {
-            headersConfig['Authorization'] = `Token ${this.jwtService.getToken()}`;
+            headersConfig['x-access-token'] = `${this.jwtService.getToken()}`;
         }
         return new Headers(headersConfig);
     }

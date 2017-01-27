@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input} from "@angular/core";
 
 @Component({
     selector: 'error-list',
@@ -8,9 +8,5 @@ export class ErrorComponent {
 
     @Input()
     error: string;
-
-     setError(error: string) {
-        this.error = error;
-    };
 
 }
