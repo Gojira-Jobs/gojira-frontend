@@ -16,7 +16,6 @@ import {UserService} from "./shared/services/user.service";
 import {ApiService} from "./shared/services/api.service";
 import {JobListingService} from "./shared/services/jobListing.service";
 import {HrModule} from "./HR/hr.module";
-import {HrportalService} from "./shared/services/hrportal.service";
 
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
@@ -25,6 +24,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
     declarations: [
         AppComponent,
         HeaderComponent,
+        
     ],
     imports: [
         BrowserModule,
@@ -40,7 +40,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
         ReactiveFormsModule,
         HrModule
     ],
-    providers: [JwtService, UserService, ApiService,HrportalService, JobListingService],
+    providers: [JwtService, UserService, ApiService, JobListingService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
