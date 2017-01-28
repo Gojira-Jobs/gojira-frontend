@@ -5,8 +5,13 @@
 
 export const environment = {
     production: false,
+<<<<<<< HEAD
 
     api_url: 'http://8ffce9bf.ngrok.io/api' //insert our api endpoint here
 
   
 };
+=======
+    api_url: 'http://8ffce9bf.ngrok.io/api' //insert our api end point here
+}
+>>>>>>> 705edfe9a5ed4b24296ddffb8b290391a9418654

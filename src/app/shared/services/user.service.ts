@@ -9,6 +9,7 @@ export class UserService {
 
     private loginEndPoint = "/authenticate";
     private registerEndpoint = "/register";
+    private userEndpoint = "/user";
 
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
@@ -22,7 +23,7 @@ export class UserService {
     populate() {
         // If JWT detected, attempt to get & store user's info
         if (this.jwtService.getToken()) {
-            this.apiService.get('/user')
+            this.apiService.get(this.userEndpoint)
                 .subscribe(
                     res => this.setAuth(res.data),
                     err => this.purgeAuth());
