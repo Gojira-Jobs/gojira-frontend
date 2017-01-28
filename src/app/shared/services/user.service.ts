@@ -77,5 +77,4 @@ export class UserService {
     getCurrentUser(): Observable<User> {
         return this.currentUserSubject.asObservable();
     }
-
 }
