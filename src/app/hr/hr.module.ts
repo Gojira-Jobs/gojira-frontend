@@ -4,19 +4,24 @@ import {HrportalComponent} from './hrportal.component';
 import {RouterModule, Routes} from '@angular/router';
 import {JobComponent} from './jobpost.component';
 import {FormsModule,ReactiveFormsModule} from "@angular/forms";
-
+import {PostedjobComponent} from "./postedjob/postedjob.component";
 const HR_ROUTES: Routes = [
     {
         path: 'hr', component: HrportalComponent,
         children:[
         {
             path:'',
-            component: JobComponent
+            component: PostedjobComponent
+        },
+         {
+            path:'postjob', component:JobComponent
         }
         
         ]
         
     }
+    
+      
 ];
 @NgModule({
   imports: [
@@ -25,6 +30,6 @@ const HR_ROUTES: Routes = [
      FormsModule,ReactiveFormsModule
 
   ],
-  declarations: [HrportalComponent,JobComponent]
+  declarations: [HrportalComponent,JobComponent,PostedjobComponent]
 })
 export class HrModule { }
