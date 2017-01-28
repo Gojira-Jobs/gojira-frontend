@@ -1,13 +1,13 @@
 import {Component} from "@angular/core";
-import {User} from "../shared/models/user";
+import {User} from "../../shared/models/user";
 import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
 import {CustomValidators} from "ng2-validation";
-import {UserService} from "../shared/services/user.service";
+import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-register',
-    templateUrl: './register.component.html'
+    templateUrl: 'register.component.html'
 })
 export class RegisterComponent {
 
