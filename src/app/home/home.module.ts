@@ -1,21 +1,21 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
-import {LandingComponent} from "./landing.component";
+import {HomeComponent} from "./home.component";
 
-const landingRouting: ModuleWithProviders = RouterModule.forChild([
+const homeRouting: ModuleWithProviders = RouterModule.forChild([
     {
         path: '',
-        component: LandingComponent
+        component: HomeComponent
     }
 ]);
 
 @NgModule({
     imports: [
-        landingRouting,
+        homeRouting,
         CommonModule
     ],
-    declarations: [LandingComponent]
+    declarations: [HomeComponent]
 })
-export class LandingModule {
+export class HomeModule {
 }

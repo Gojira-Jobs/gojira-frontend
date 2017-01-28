@@ -3,26 +3,82 @@
  <h4>Edit Personal Details</h4><br>
                 <hr class="w3-clear">
 
-  <form>
+  <form (ngSubmit)="load(profileForm.value)" [formGroup] = "profileForm" >
     <div class="form-group">
       <label for="name"><h6>Candidate Name </h6></label>
-      <input  type="text" class="form-control" id="name" value={{details[0]}}>
+      <input  type="text"  class="form-control" formControlName="name" >
     </div>
     <div class="form-group">
       <label for="dob"><h6>Date of Birth </h6></label>
-      <input type="date" class="form-control" id="date" >
+        <input type="date" class="form-control" formControlName="dob"
+               value="{{this.details.dob |  date: 'yyyy/MM/dd'}}">
     </div>
    
     <div class="form-group">
       <label for="email"><h6>Email </h6></label>
-      <input type="email" class="form-control" id="email" >
+      <input type="email" class="form-control" formControlName="email" disabled="true">
     </div>
-    <div class="form-group">
-      <label for="Contact"><h6> Contact No </h6></label>
-      <input type="number" class="form-control" id="date">
-    </div>
-    <button type="button" class="btn btn-default" (click)="load()">Submit</button>
-  </form>
+    
+   
+    
+  
 
-<hr class="w3-clear">
-                
+<hr class="w3-clear"> <!--- second part -->
+       
+   <div class="form-group">
+    <label for="Qualification">Qualification</label>
+    
+        <select class="form-control" id="select" formControlName="high_qual">
+          <option>Bachelor of Computer Science</option>
+          <option>Bachelor of Arts</option>
+          <option>Bachelor of Architecture</option>
+       
+        </select>
+    
+    <input type="checkbox" id="Pursuing" value="Pursuing" formControlName="pursuing"> 
+    <label for="Pursuing">Pursuing</label>
+    
+    <div class="input-group">
+      <div class="input-group-addon">%</div>
+      <input type="text" class="form-control" id="InputPercentage" placeholder="Current Percenatge"  formControlName="high_qual_perc">
+     
+  </div>
+
+  <hr class="w3-clear"> <!--- third part -->
+<div class="form-group">
+  <label for="StreetInputText">Street</label>
+     <input type="text" class="form-control"  id="streetInputText" formControlName="line" >
+ 
+     <label for="cityInputText">City</label>
+     <input type="text" class="form-control"  id="cityInputText" formControlName="city" >
+ 
+     <label for="stateInputText">State</label>
+     <input type="text" class="form-control"  id="stateInputText" formControlName="state" >
+
+     
+     <label for="pinInputText">Pin-Code</label>
+     <input type="text" class="form-control"  id="pinInputText" formControlName="pincode" >
+     <br>
+    
+      <div class="input-group">
+      <div class="input-group-addon">+91</div>
+      <input type="text" class="form-control" id="InputNumber" placeholder="Mobile Number" formControlName="mobile" >
+     
+    </div>
+     </div>
+    </div>
+   <hr class="w3-clear">
+     <div class="form-group">
+    <label for="resumeInputFile">Upload your Profile Pic.</label>
+    <input type="file" id="resumeInputFile" formControlName="resume">
+   <small id="Warning" class="form-text text-muted">*Upload only .png Format </small>
+   </div>
+    <div class="form-group">
+    <label for="profileInputFile">Upload your Resume</label>
+    <input type="file" id="profileInputFile" formControlName="picture">
+   <small id="Warning" class="form-text text-muted">*Upload only .pdf Format </small>
+    
+  <button type="submit"  class="btn btn-primary">Submit</button>
+     </div>
+  
+         

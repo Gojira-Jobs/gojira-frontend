@@ -4,6 +4,8 @@ import {ProfileComponent} from "./profile.component";
 import { RouterModule, Routes } from '@angular/router';
 import { UserdetailsComponent } from './userdetails.component';
 import {EditComponent} from './edit.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 
 
@@ -27,7 +29,9 @@ const APP_ROUTES:Routes=[
 @NgModule({
     imports: [
         CommonModule,
-         RouterModule.forRoot(APP_ROUTES)
+         RouterModule.forRoot(APP_ROUTES),
+         FormsModule,
+         ReactiveFormsModule
     ],
     declarations: [ProfileComponent, UserdetailsComponent,EditComponent]
 })

@@ -23,20 +23,38 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Recipient's username"
-                               aria-describedby="basic-addon2">
-                        <span class="input-group-addon" id="basic-addon2">Search</span>
-                    </div>
+                    <form>
+                        <div class="input-group">
+
+                            <input [(ngModel)]="listFilter" name="listSearch" type="text" class="form-control"
+                                   aria-describedby="basic-addon2"/>
+                            <span class="input-group-addon" id="basic-addon2">Search</span>
+
+                        </div>
+                    </form>
                 </h3>
             </div>
 
-
+            <div *ngFor='let Job of job '>
             <div class="panel-body">
-                Panel content
+                <div class="panel panel-primary">
+
+
+                    <div class="panel-body listing">
+                        <div style="margin-top:-25px "><h3>{{Job.title | uppercase}}</h3><h6>{{Job.category}}</h6></div>
+                        {{Job.description}}
+
+                        <div>
+                            <button type="button" class="btn btn-primary pull-right">Apply</button>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
-            <div class="panel-footer">
-                <nav aria-label="...">
+            </div>
+
+            <nav aria-label="...">
                     <ul class="pagination">
                         <li class="disabled"><a href="#" aria-label="Previous"><span
                                 aria-hidden="true">&laquo;</span></a></li>
@@ -44,7 +62,7 @@
                         ...
                     </ul>
                 </nav>
-            </div>
+
         </div>
     </div>
 </div>

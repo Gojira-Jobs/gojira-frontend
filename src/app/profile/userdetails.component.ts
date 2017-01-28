@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ProfileService} from './profile.service';
+import {Component, OnInit} from "@angular/core";
+import {ProfileService} from "./profile.service";
+import {User} from "../shared/models/user";
 @Component({
   selector: 'app-userdetails',
   template:`
@@ -7,11 +8,11 @@ import {ProfileService} from './profile.service';
                 <h4>Personal Details</h4><br>
                 
                 <hr class="w3-clear">
-                <h6>Candidate Name : {{details[0]}} </h6>
-                <h6>Date of Birth : {{details[1]}} </h6>
-                <h6>Gender : {{details[2]}} </h6> 
-                <h6>Email Id : {{details[3]}} </h6>
-                <h6>Contact no : {{details[4]}} </h6>
+                <h6>Candidate Name : {{details.name}} </h6>
+                <h6>Date of Birth : {{details.dob |  date: 'yyyy/MM/dd'}} </h6>
+                <h6>Gender : {{details.gender}} </h6> 
+                <h6>Email Id : {{details.email}} </h6>
+                <h6>Contact no : {{details.mobile}} </h6>
                 <hr class="w3-clear">
   
   `
@@ -20,7 +21,8 @@ import {ProfileService} from './profile.service';
 export class UserdetailsComponent implements OnInit {
 
   constructor(private profile: ProfileService,) { }
-details:string[];
+
+    details: User;
   ngOnInit() {
     this.details=this.profile.getDetails();
   }
