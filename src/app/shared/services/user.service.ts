@@ -17,6 +17,21 @@ export class UserService {
                 private jwtService: JwtService) {
     }
 
+    // Verify JWT in local storage with server & load user's info.
+    // This runs once on application startup.
+    populate() {
+        // If JWT detected, attempt to get & store user's info
+        if (this.jwtService.getToken()) {
+            this.apiService.get('/user')
+                .subscribe(
+                    res => this.setAuth(res.data),
+                    err => this.purgeAuth());
+        } else {
+            // Remove any potential remnants of previous auth states
+            this.purgeAuth();
+        }
+    }
+
     login(credentials: User) {
         return this.apiService.post(this.loginEndPoint, credentials)
             .map(res => {
@@ -32,19 +47,19 @@ export class UserService {
         //set current user into observable
         this.currentUserSubject.next(user);
         localStorage.setItem('email', user.email);
-        localStorage.setItem('user', user.name);
+        // localStorage.setItem('user', user.name);
         this.isAuthenticatedSubject.next(true);
     }
 
     public register(user: User) {
         return this.apiService.post(this.registerEndpoint, user)
             .map(data => {
-                this.setAuth(data.data);
                 return data.data;
             });
     }
 
     public purgeAuth() {
+        console.log('purging auth');
         //delete token from into local storage
         this.jwtService.destroyToken();
 
@@ -58,5 +73,7 @@ export class UserService {
         return this.isAuthenticatedSubject.asObservable();
     }
 
-
+    getCurrentUser(): Observable<User> {
+        return this.currentUserSubject.asObservable();
+    }
 }

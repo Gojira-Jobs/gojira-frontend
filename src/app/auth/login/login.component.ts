@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {UserService} from "../shared/services/user.service";
-import {Errors} from "../shared/models/Error";
+import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,7 +10,7 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
 
     loginForm: FormGroup;
-    errors: Errors = new Errors();
+    error: string;
     isSubmitting: boolean = false;
 
     constructor(fb: FormBuilder, private userService: UserService, private router: Router) {
@@ -28,7 +27,6 @@ export class LoginComponent implements OnInit {
 
     onLogin() {
         let credentials = this.loginForm.value;
-        this.errors = new Errors();
         this.isSubmitting = true;
 
         console.log(credentials);
@@ -37,10 +35,8 @@ export class LoginComponent implements OnInit {
                     this.router.navigateByUrl('/');
                 },
                 err => {
-                    //TODO error handling
-                    console.log(err.msg);
                     this.userService.purgeAuth();
-                    this.errors = err;
+                    this.error = err.msg;
                     this.isSubmitting = false;
                 });
     }

@@ -3,7 +3,6 @@ import {ProfileService} from './profile.service';
 import {Router} from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { User } from '../shared/models/user';
-import { Address } from '../shared/models/address';
 import { Input } from '@angular/core';
 @Component({
   selector: 'app-edit',
@@ -13,9 +12,7 @@ export class EditComponent implements OnInit {
 	profileForm : FormGroup;
   details: User;
   constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
-  	
-    this.details=this.prf.getDetails();
-
+  	this.details=this.prf.getDetails();
   	this.profileForm = fb.group({
 	  'name' : [this.details.name, Validators.required],
 	  'email' : [this.details.email, Validators.required],
@@ -40,6 +37,7 @@ export class EditComponent implements OnInit {
   }
   load()
 {
+     console.log("Data from form: "); 	
     console.log(this.profileForm.value); 	
 	  this.details = this.profileForm.value;
     this.prf.postDetails(this.details);   //for updation of db use this object to make the post request.

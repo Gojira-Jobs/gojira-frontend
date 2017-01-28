@@ -15,8 +15,4 @@ constructor(private profile: ProfileService) { }
   ngOnInit() {
     this.details=this.profile.getDetails();
   }
-
-
- 
-
 }

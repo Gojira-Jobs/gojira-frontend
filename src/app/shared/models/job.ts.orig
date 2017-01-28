@@ -6,8 +6,13 @@ export class Job {
     AgeLimit: string;
     WorkExp: string;
     EduDetails: string;
+<<<<<<< HEAD
+    last_date: string;
+    Joining: string;
+=======
     last_date = new Date("YYYY/MM/DD");
     Joining =  new Date("YYYY/MM/DD");
+>>>>>>> 3b7630725675b434c91caf3fcfed56c2135894b8
     WorkPlace: string;
     postedBy: string;
     

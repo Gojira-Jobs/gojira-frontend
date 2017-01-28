@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Job } from '../shared/models/job';
 import { JobListingService } from '../shared/services/jobListing.service';
 

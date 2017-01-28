@@ -1,9 +1,8 @@
 import {Component} from "@angular/core";
-import {User} from "../shared/models/user";
+import {User} from "../../shared/models/user";
 import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
 import {CustomValidators} from "ng2-validation";
-import {UserService} from "../shared/services/user.service";
-import {Errors} from "../shared/models/Error";
+import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,9 +11,10 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent {
 
-    errors: Errors = new Errors();
+    error: string;
     isSubmitting: boolean = false;
     signupForm: FormGroup;
+    user :User;
 
     constructor(fb: FormBuilder, private userService: UserService, private router: Router) {
         let password = new FormControl('', Validators.compose([Validators.required,
@@ -30,23 +30,24 @@ export class RegisterComponent {
         });
     }
 
-    user = new User;
+    
 
     onSubmit(value: any) {
+        console.log("We are in submit function!!");
         this.user.name = value.name;
         this.user.email = value.email;
         this.user.password = value.password;
 
-        this.errors = new Errors();
         this.isSubmitting = true;
 
         this.userService.register(this.user)
-            .subscribe(res => {
-                this.router.navigateByUrl('/profile');
+            .subscribe(data => {
+                //set login using new data
+                this.userService.setAuth(data);
+
+                this.router.navigateByUrl('/profile/edit');
             }, err => {
-                //TODO error handling
-                console.log(err.msg);
-                this.errors = err;
+                this.error = err.msg;
                 this.isSubmitting = false;
             });
     }

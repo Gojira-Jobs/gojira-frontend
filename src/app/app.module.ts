@@ -3,8 +3,6 @@ import {NgModule, ModuleWithProviders} from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
-import {HeaderComponent} from "./shared/layouts/header/header.component";
-import {LandingModule} from "./landing/landing.module";
 import {RouterModule} from "@angular/router";
 import {FindjobModule} from "./findjob/findjob.module";
 import {ProfileModule} from "./profile/profile.module";
@@ -15,9 +13,10 @@ import {JwtService} from "./shared/services/jwt.service";
 import {UserService} from "./shared/services/user.service";
 import {ApiService} from "./shared/services/api.service";
 import {JobListingService} from "./shared/services/jobListing.service";
-import {HrModule} from "./HR/hr.module";
+import {HrModule} from "./hr/hr.module";
 import {HrportalService} from "./shared/services/hrportal.service";
-
+import {HomeModule} from "./home/home.module";
+import {HeaderComponent} from "./shared/layouts/header.component";
 
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
@@ -25,13 +24,13 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderComponent
+        HeaderComponent,
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        LandingModule,
+        HomeModule,
         FindjobModule,
         AboutusModule,
         ProfileModule,
@@ -41,7 +40,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
         ReactiveFormsModule,
         HrModule
     ],
-    providers: [JwtService, UserService, ApiService,HrportalService, JobListingService],
+    providers: [JwtService, UserService, ApiService, HrportalService, JobListingService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

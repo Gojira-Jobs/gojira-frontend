@@ -8,7 +8,6 @@ export class JwtService {
     }
 
     saveToken(token: string) {
-
         localStorage.setItem('jwtToken', token);
     }
 

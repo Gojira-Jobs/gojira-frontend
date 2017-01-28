@@ -1,7 +1,6 @@
-import {Address} from './address';
+import {Address} from "./address";
 
 export class User {
-    uid: number;
     name: string;
     email: string;
     token: string;

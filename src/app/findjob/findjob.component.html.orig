@@ -35,7 +35,8 @@
                 </h3>
             </div>
 
-<div *ngFor='let Job of job '>
+<<<<<<< HEAD
+<div *ngFor='let Job of job; let i=index'>
             <div class="panel-body">
              <div class="panel panel-primary">
    
@@ -45,11 +46,15 @@
          <div style="margin-top:-25px "><h3>{{Job.title | uppercase}}</h3><h6>{{Job.category}}</h6></div>
      {{Job.description}}
      
-     <div>
-     <button type="button" class="btn btn-primary pull-right">Apply</button>
-     </div>
+    <div>
+    <button type="button" (click)="show(Job)" class="btn btn-default">View Job Details</button>
+    
+    <button type="button" class="btn btn-primary pull-right" (click)="apply()">Apply</button>
+    </div>
 </div>
 </div>
+
+
             </div>
             </div>
             
@@ -83,7 +88,30 @@
     </div>
   </div>
 
+
+                <nav aria-label="...">
+=======
+            <div *ngFor='let Job of job '>
+            <div class="panel-body">
+                <div class="panel panel-primary">
+
+
+                    <div class="panel-body listing">
+                        <div style="margin-top:-25px "><h3>{{Job.title | uppercase}}</h3><h6>{{Job.category}}</h6></div>
+                        {{Job.description}}
+
+                        <div>
+                            <button type="button" class="btn btn-primary pull-right">Apply</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            </div>
+
             <nav aria-label="...">
+>>>>>>> 3b7630725675b434c91caf3fcfed56c2135894b8
                     <ul class="pagination">
                         <li class="disabled"><a href="#" aria-label="Previous"><span
                                 aria-hidden="true">&laquo;</span></a></li>
@@ -91,7 +119,7 @@
                         ...
                     </ul>
                 </nav>
-        
+
         </div>
     </div>
 </div>

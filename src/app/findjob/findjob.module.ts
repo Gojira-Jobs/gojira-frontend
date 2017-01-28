@@ -15,7 +15,7 @@ const findjobRouting: ModuleWithProviders = RouterModule.forChild([
     imports: [
         CommonModule,
         findjobRouting,
-         FormsModule
+        FormsModule
     ],
     declarations: [FindjobComponent]
 })
