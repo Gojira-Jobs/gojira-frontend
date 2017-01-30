@@ -6,12 +6,15 @@ import {User} from "../models/user";
 
 @Injectable()
 export class UserService {
-
+   name:string;
+  
     private loginEndPoint = "/authenticate";
     private registerEndpoint = "/register";
-
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
+    private isAuthenticatedHr = new BehaviorSubject<boolean>(false);
+     
+     private resolve: Function = null;
 
     constructor(private apiService: ApiService,
                 private jwtService: JwtService) {
@@ -46,6 +49,9 @@ export class UserService {
 
         //set current user into observable
         this.currentUserSubject.next(user);
+        if(user.hr){
+        this.isAuthenticatedHr.next(true);
+        }
         localStorage.setItem('email', user.email);
         // localStorage.setItem('user', user.name);
         this.isAuthenticatedSubject.next(true);
@@ -69,10 +75,15 @@ export class UserService {
         this.isAuthenticatedSubject.next(false);
     }
 
+
     public isLoggedIn(): Observable<boolean> {
         return this.isAuthenticatedSubject.asObservable();
     }
 
+     public isHrLoggedIn(): Observable<boolean> {
+         return this.isAuthenticatedHr.asObservable();
+    }
+    
     getCurrentUser(): Observable<User> {
         return this.currentUserSubject.asObservable();
     }

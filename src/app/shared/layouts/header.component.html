@@ -18,7 +18,7 @@
             </ul>
 
             <ul *ngIf="!(loggedIn | async)" class="nav navbar-nav navbar-right">
-                <li><a [routerLink]="['login']">Login</a></li>
+                <li><a [routerLink]="['login']" (hr)="ishr($event)">Login</a></li>
                 <li><a [routerLink]="['register']">Sign-Up</a></li>
             </ul>
             <ul *ngIf="(loggedIn | async)" class="nav navbar-nav navbar-right">
@@ -27,9 +27,14 @@
                 <li><a (click)="logout()">Logout</a></li>
 
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a [routerLink]="['/hr/postjob']">Post Job</a></li>
+           <ul *ngIf="(loggedInHr | async)" class="nav navbar-nav navbar-right">
+
+                <li><a [routerLink]="['/hr/jobpost']">post Job</a>
+
             </ul>
+           
+            
+        
         </div>
     </div>
 </nav>
