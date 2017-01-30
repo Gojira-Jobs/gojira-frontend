@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {UserService} from "../services/user.service";
 import {NgForm} from "@angular/forms";
 import {User} from "../models/user";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'layout-header',
@@ -18,14 +19,13 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        
-     this.loggedInHr=this.userService.isHrLoggedIn();
-        
+        this.userService.populate();
+ this.loggedInHr=this.userService.isHrLoggedIn();
+      
         this.loggedIn = this.userService.isLoggedIn();
 
         this.userService.getCurrentUser()
             .subscribe(user => {
-                console.log('user changed to ' + JSON.stringify(user));
                 this.currentUser = user
             });
     }
@@ -35,5 +35,4 @@ export class HeaderComponent implements OnInit {
    
         this.userService.purgeAuth();
     }
-
 }

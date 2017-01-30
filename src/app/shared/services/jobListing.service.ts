@@ -13,4 +13,8 @@ export class JobListingService {
             .map(data => data.jobs);
     }
 
+applyJob(){
+  console.log("TO DO");
+}
+
 }

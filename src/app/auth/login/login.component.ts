@@ -6,8 +6,6 @@ import {Router} from "@angular/router";
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    providers:[UserService]
-
 })
 export class LoginComponent implements OnInit {
     @Output() hr=new EventEmitter();

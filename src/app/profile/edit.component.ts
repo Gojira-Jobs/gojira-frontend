@@ -1,20 +1,23 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {ProfileService} from "./profile.service";
-import {Router} from "@angular/router";
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {User} from "../shared/models/user";
+import { Component, OnInit } from '@angular/core';
+import {ProfileService} from './profile.service';
+import {Router} from '@angular/router';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { User } from '../shared/models/user';
+import { Input } from '@angular/core';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html'
 })
 export class EditComponent implements OnInit {
 	profileForm : FormGroup;
-    @Input() details: User;
-  	constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
-  		this.details=this.prf.getDetails();
+  details: User;
+  constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
+  	this.prf.getDetails().subscribe(data=>{
+      this.details= data;
+    });
   	this.profileForm = fb.group({
-	'name' : [this.details.name, Validators.required],
-	'email' : [this.details.email, Validators.required],
+	  'name' : [this.details.name, Validators.required],
+	  'email' : [this.details.email, Validators.required],
     'pursuing' : [this.details.pursuing_status],
     'high_qual' : [this.details.high_qual, Validators.required],
     'dob' : [this.details.dob, Validators.required],
@@ -36,9 +39,8 @@ export class EditComponent implements OnInit {
   }
   load()
 {
-    console.log(this.profileForm.value); 	
 	  this.details = this.profileForm.value;
-    this.prf.postDetails(this.details);   //for updation of db use this object to make the post request.
+    this.prf.postDetails(this.details);
   	this.router.navigate(['profile']);
 }
   

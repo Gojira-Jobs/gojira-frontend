@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../../shared/services/api.service';
-import {RequestOptions,URLSearchParams} from '@angular/http';
-import {Job} from '../../shared/models/job';
+import {Component, OnInit} from "@angular/core";
+import {ApiService} from "../../shared/services/api.service";
+import {URLSearchParams} from "@angular/http";
+import {Job} from "../../shared/models/job";
 @Component({
   selector: 'app-postedjob',
-  templateUrl: './postedjob.component.html'
+    templateUrl: 'postedjob.component.html'
 })
 export class PostedjobComponent implements OnInit {
 

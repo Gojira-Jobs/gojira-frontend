@@ -4,7 +4,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {HeaderComponent} from "./shared/layouts/header.component";
-import {HomeModule} from "./Home/home.module";
 import {RouterModule} from "@angular/router";
 import {FindjobModule} from "./findjob/findjob.module";
 import {ProfileModule} from "./profile/profile.module";
@@ -15,21 +14,23 @@ import {JwtService} from "./shared/services/jwt.service";
 import {UserService} from "./shared/services/user.service";
 import {ApiService} from "./shared/services/api.service";
 import {JobListingService} from "./shared/services/jobListing.service";
-import {HrModule} from "./HR/hr.module";
+import {HrModule} from "./hr/hr.module";
 
-
-const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
+const rootRouting: ModuleWithProviders = RouterModule.forRoot([
+    {
+        path: '', redirectTo: "findjob", pathMatch: 'full'
+    }, {
+        path: '**', redirectTo: '/findjob', pathMatch: 'full'
+    }
+]);
 
 @NgModule({
     declarations: [
-        AppComponent,
-        HeaderComponent,
-    ],
+        AppComponent, HeaderComponent],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        HomeModule,
         FindjobModule,
         AboutusModule,
         ProfileModule,
@@ -40,12 +41,11 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {});
         HrModule
     ],
     bootstrap: [AppComponent],
-    providers:[UserService,
-    ApiService,
-    JobListingService,
-    JwtService
+    providers: [UserService,
+        ApiService,
+        JobListingService,
+        JwtService
     ]
-
 })
 export class AppModule {
 }

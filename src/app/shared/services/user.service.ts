@@ -6,16 +6,15 @@ import {User} from "../models/user";
 
 @Injectable()
 export class UserService {
-   name:string;
-  
+
     private loginEndPoint = "/authenticate";
     private registerEndpoint = "/register";
+    private userEndpoint = "/user";
+
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
     private isAuthenticatedHr = new BehaviorSubject<boolean>(false);
      
-     private resolve: Function = null;
-
     constructor(private apiService: ApiService,
                 private jwtService: JwtService) {
     }
@@ -25,7 +24,7 @@ export class UserService {
     populate() {
         // If JWT detected, attempt to get & store user's info
         if (this.jwtService.getToken()) {
-            this.apiService.get('/user')
+            this.apiService.get(this.userEndpoint)
                 .subscribe(
                     res => this.setAuth(res.data),
                     err => this.purgeAuth());
@@ -87,6 +86,4 @@ export class UserService {
     getCurrentUser(): Observable<User> {
         return this.currentUserSubject.asObservable();
     }
-
-
 }
