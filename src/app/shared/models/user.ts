@@ -11,6 +11,7 @@ export class User {
     high_qual_perc: number;
     pursuing_status: boolean;
     dob: Date;
+    hr: boolean;
     gender: string;
     resume: string;
     picture: string;

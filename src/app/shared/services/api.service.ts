@@ -17,7 +17,8 @@ export class ApiService {
             'Accept': 'application/json'
         };
         if (this.jwtService.getToken()) {
-            headersConfig['x-access-token'] = `${this.jwtService.getToken()}`;
+            headersConfig['Token'] = `${this.jwtService.getToken()}`;
+            headersConfig['email'] = `${localStorage.getItem('email')}`;
         }
         return new Headers(headersConfig);
     }
@@ -31,6 +32,7 @@ export class ApiService {
             headers: this.setHeaders(),
             search: params
         }).catch(this.formatErrors).map((res: Response) => {
+            console.log(res.json());
             return res.json();
         });
     }
@@ -41,7 +43,9 @@ export class ApiService {
             JSON.stringify(body),
             {headers: this.setHeaders()}
         ).catch(this.formatErrors)
-            .map((res: Response) => {return res.json()});
+            .map((res: Response) => {
+                return res.json()
+            });
     }
 
     put(path: string, body: Object = {}): Observable<any> {
@@ -50,7 +54,9 @@ export class ApiService {
             JSON.stringify(body),
             {headers: this.setHeaders()}
         ).catch(this.formatErrors)
-            .map((res: Response) => {return res.json()});
+            .map((res: Response) => {
+                return res.json()
+            });
     }
 
 

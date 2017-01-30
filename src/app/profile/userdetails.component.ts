@@ -20,13 +20,14 @@ import {UserService} from "../shared/services/user.service";
 })
 export class UserdetailsComponent implements OnInit {
 
-  constructor(private profile: ProfileService, private userService: UserService) { }
+    constructor(private profile: ProfileService, private userService: UserService) {
+    }
 
     details: User;
   ngOnInit() {
-    this.userService.populate();
-    this.profile.getDetails().subscribe(data=>{
-    this.details= data;
-    });
+      this.userService.populate();
+      this.profile.getDetails().subscribe(data => {
+          this.details = data;
+      });
   }
 }
