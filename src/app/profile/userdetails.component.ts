@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ProfileService} from "./profile.service";
 import {User} from "../shared/models/user";
+import {UserService} from "../shared/services/user.service";
 @Component({
   selector: 'app-userdetails',
   template:`
@@ -8,23 +9,24 @@ import {User} from "../shared/models/user";
                 <h4>Personal Details</h4><br>
                 
                 <hr class="w3-clear">
-                <h6>Candidate Name : {{details.name}} </h6>
-                <h6>Date of Birth : {{details.dob |  date: 'yyyy/MM/dd'}} </h6>
+                <h6>Candidate Name : {{details?.name}} </h6>
+                <h6>Date of Birth : {{details?.dob |  date: 'yyyy/MM/dd'}} </h6>
                 <h6>Gender : {{details.gender}} </h6> 
                 <h6>Email Id : {{details.email}} </h6>
                 <h6>Contact no : {{details.mobile}} </h6>
                 <hr class="w3-clear">
   
   `
-  
 })
 export class UserdetailsComponent implements OnInit {
 
-  constructor(private profile: ProfileService,) { }
+  constructor(private profile: ProfileService, private userService: UserService) { }
 
     details: User;
   ngOnInit() {
-    this.details=this.profile.getDetails();
+    this.userService.populate();
+    this.profile.getDetails().subscribe(data=>{
+    this.details= data;
+    });
   }
-
 }

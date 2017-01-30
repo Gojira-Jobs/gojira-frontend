@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileService} from './profile.service';
 import {Router} from '@angular/router';
+import { User } from '../shared/models/user';
 
 @Component({
   selector: 'app-profile',
@@ -9,11 +10,12 @@ import {Router} from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-constructor(private router:Router) { }
-
-
+constructor(private profile: ProfileService) { }
+ details: User;
   ngOnInit() {
-
+    this.profile.getDetails().subscribe(user => {
+                this.details = user;
+                console.log(this.details);
+            });
   }
-
 }

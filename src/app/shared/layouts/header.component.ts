@@ -22,10 +22,10 @@ export class HeaderComponent implements OnInit {
 
         this.userService.getCurrentUser()
             .subscribe(user => {
-                console.log('user changed to ' + JSON.stringify(user));
                 this.currentUser = user
             });
     }
+
 
     logout() {
 

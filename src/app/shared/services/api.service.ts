@@ -42,10 +42,16 @@ export class ApiService {
             JSON.stringify(body),
             {headers: this.setHeaders()}
         ).catch(this.formatErrors)
-            .map((res: Response) => {
-                console.log(res.json());
-                return res.json()
-            });
+            .map((res: Response) => {return res.json()});
+    }
+
+    put(path: string, body: Object = {}): Observable<any> {
+        return this.http.put(
+            `${environment.api_url}${path}`,
+            JSON.stringify(body),
+            {headers: this.setHeaders()}
+        ).catch(this.formatErrors)
+            .map((res: Response) => {return res.json()});
     }
 
 
