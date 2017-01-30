@@ -43,6 +43,7 @@ export class UserService {
     }
 
     public setAuth(user: User) {
+        console.log(JSON.stringify(user));
         //save token into local storage
         this.jwtService.saveToken(user.token);
 

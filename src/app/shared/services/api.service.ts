@@ -18,6 +18,7 @@ export class ApiService {
         };
         if (this.jwtService.getToken()) {
             headersConfig['Token'] = `${this.jwtService.getToken()}`;
+            headersConfig['email'] = `${localStorage.getItem('email')}`;
         }
         return new Headers(headersConfig);
     }
@@ -42,7 +43,9 @@ export class ApiService {
             JSON.stringify(body),
             {headers: this.setHeaders()}
         ).catch(this.formatErrors)
-            .map((res: Response) => {return res.json()});
+            .map((res: Response) => {
+                return res.json()
+            });
     }
 
     put(path: string, body: Object = {}): Observable<any> {
@@ -51,7 +54,9 @@ export class ApiService {
             JSON.stringify(body),
             {headers: this.setHeaders()}
         ).catch(this.formatErrors)
-            .map((res: Response) => {return res.json()});
+            .map((res: Response) => {
+                return res.json()
+            });
     }
 
 
