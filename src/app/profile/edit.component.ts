@@ -12,7 +12,9 @@ export class EditComponent implements OnInit {
 	profileForm : FormGroup;
   details: User;
   constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
-  	this.details=this.prf.getDetails();
+  	this.prf.getDetails().subscribe(data=>{
+      this.details= data;
+    });
   	this.profileForm = fb.group({
 	  'name' : [this.details.name, Validators.required],
 	  'email' : [this.details.email, Validators.required],
@@ -37,10 +39,8 @@ export class EditComponent implements OnInit {
   }
   load()
 {
-     console.log("Data from form: "); 	
-    console.log(this.profileForm.value); 	
 	  this.details = this.profileForm.value;
-    this.prf.postDetails(this.details);   //for updation of db use this object to make the post request.
+    this.prf.postDetails(this.details);
   	this.router.navigate(['profile']);
 }
   

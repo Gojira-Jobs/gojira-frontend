@@ -14,26 +14,13 @@ constructor( private userService : UserService, private apiService: ApiService){
 
 getDetails()
 {
-  this.userService.getCurrentUser()
-            .subscribe(user => {
-                console.log('user changed to ' + JSON.stringify(user));
-                this.currentUser = user;
-            console.log(this.currentUser);
-            });
-			return this.currentUser;
+  return this.userService.getCurrentUser()
+            
 }
 
 postDetails(user : User){
-    console.log('Edited: ');
-    console.log(user);
     this.apiService.put("/user",user)
         .map(data =>
-        JSON.stringify(data)).subscribe(data=>
-        {console.log('hello');
-        this.currentUser=this.getDetails();
-        }
-        );
-
-	
+        JSON.stringify(data)).subscribe(data=>{});
 } 
 }
