@@ -17,7 +17,7 @@ export class ApiService {
             'Accept': 'application/json'
         };
         if (this.jwtService.getToken()) {
-            headersConfig['x-access-token'] = `${this.jwtService.getToken()}`;
+            headersConfig['Token'] = `${this.jwtService.getToken()}`;
         }
         return new Headers(headersConfig);
     }
@@ -42,7 +42,10 @@ export class ApiService {
             JSON.stringify(body),
             {headers: this.setHeaders()}
         ).catch(this.formatErrors)
-            .map((res: Response) => {console.log(res.json());return res.json()});
+            .map((res: Response) => {
+                console.log(res.json());
+                return res.json()
+            });
     }
 
 

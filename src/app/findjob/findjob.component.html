@@ -3,7 +3,7 @@
 
 
     <p>Search over 4,818 job postings in any category</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
 </div>
 <div class="row">
     <div class="col-md-1"></div>
@@ -36,32 +36,33 @@
             </div>
 
             <div *ngFor='let Job of job '>
-            <div class="panel-body">
-                <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="panel panel-primary">
 
 
-                    <div class="panel-body listing">
-                        <div style="margin-top:-25px "><h3>{{Job.title | uppercase}}</h3><h6>{{Job.category}}</h6></div>
-                        {{Job.description}}
+                        <div class="panel-body listing">
+                            <div style="margin-top:-25px "><h3>{{Job.title | uppercase}}</h3><h6>{{Job.category}}</h6>
+                            </div>
+                            {{Job.description}}
 
-                        <div>
-                            <button type="button" class="btn btn-primary pull-right">Apply</button>
+                            <div>
+                                <button type="button" class="btn btn-primary pull-right">Apply</button>
+                            </div>
                         </div>
+
+
                     </div>
-
-
                 </div>
-            </div>
             </div>
 
             <nav aria-label="...">
-                    <ul class="pagination">
-                        <li class="disabled"><a href="#" aria-label="Previous"><span
-                                aria-hidden="true">&laquo;</span></a></li>
-                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                        ...
-                    </ul>
-                </nav>
+                <ul class="pagination">
+                    <li class="disabled"><a href="#" aria-label="Previous"><span
+                            aria-hidden="true">&laquo;</span></a></li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    ...
+                </ul>
+            </nav>
 
         </div>
     </div>
