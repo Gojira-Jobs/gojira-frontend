@@ -14,7 +14,7 @@ export class RegisterComponent {
     error: string;
     isSubmitting: boolean = false;
     signupForm: FormGroup;
-    user :User;
+    user :User= <User>{};
 
     constructor(fb: FormBuilder, private userService: UserService, private router: Router) {
         let password = new FormControl('', Validators.compose([Validators.required,
@@ -33,18 +33,14 @@ export class RegisterComponent {
     
 
     onSubmit(value: any) {
-        console.log("We are in submit function!!");
         this.user.name = value.name;
         this.user.email = value.email;
         this.user.password = value.password;
-
         this.isSubmitting = true;
-
-        this.userService.register(this.user)
+         this.userService.register(this.user)
             .subscribe(data => {
                 //set login using new data
                 this.userService.setAuth(data);
-
                 this.router.navigateByUrl('/profile/edit');
             }, err => {
                 this.error = err.msg;

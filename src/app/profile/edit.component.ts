@@ -3,6 +3,7 @@ import {ProfileService} from './profile.service';
 import {Router} from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { User } from '../shared/models/user';
+import { Address } from '../shared/models/address';
 import { Input } from '@angular/core';
 @Component({
   selector: 'app-edit',
@@ -10,10 +11,12 @@ import { Input } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 	profileForm : FormGroup;
-  details: User;
+  details: User=<User>{};
+  
   constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
   	this.prf.getDetails().subscribe(data=>{
       this.details= data;
+      this.details.address=<Address>{};
     });
   	this.profileForm = fb.group({
 	  'name' : [this.details.name, Validators.required],
