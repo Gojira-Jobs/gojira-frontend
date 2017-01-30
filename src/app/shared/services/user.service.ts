@@ -48,9 +48,11 @@ export class UserService {
 
         //set current user into observable
         this.currentUserSubject.next(user);
-        if(user.hr){
-        this.isAuthenticatedHr.next(true);
-        }
+  //              console.log(user.isHr+"user service");
+    //    if(user.isHr){
+      //  this.isAuthenticatedHr.next(true);
+       // console.log(user.isHr+"user service");
+        //}
         localStorage.setItem('email', user.email);
         // localStorage.setItem('user', user.name);
         this.isAuthenticatedSubject.next(true);

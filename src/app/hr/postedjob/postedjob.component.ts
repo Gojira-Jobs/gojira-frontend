@@ -13,7 +13,10 @@ postedjob:Job[];
   constructor(private getjob:ApiService) { }
 
   ngOnInit() {
-
+if(!localStorage.getItem("hremail"))
+{
+  return 1;
+}
 this.getjob.get("/hr/postedJobs",new URLSearchParams('email=ajit.x@venturepact.com'))
 .subscribe(
  data=>{

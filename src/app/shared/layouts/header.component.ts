@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
     currentUser: User;
      loggedInHr : Observable<boolean>;
     
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService,private router:Router) {
     }
 
     ngOnInit() {
@@ -34,5 +34,7 @@ export class HeaderComponent implements OnInit {
     logout() {
    
         this.userService.purgeAuth();
+        this.router.navigateByUrl('login');
+        localStorage.clear();
     }
 }

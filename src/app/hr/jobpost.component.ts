@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
         templateUrl:'./jobpost.html'
     }
 )
-export class JobComponent  {
+export class JobComponent implements OnInit  {
     
 /** user={
    username:'',
@@ -21,10 +21,14 @@ export class JobComponent  {
  obj:any;
  constructor(private postjob:ApiService,private router:Router){}
  job = new Job();
+ngOnInit()
+{
+  return 1;
 
+}
   onSubmit()
   {
-
+    
  console.log(JSON.stringify(this.job.Joining));
     this.postjob.post("/joblisting",this.job).subscribe(data=>{
         this.val= true},

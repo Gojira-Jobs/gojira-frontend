@@ -11,8 +11,13 @@ email:string;
 
   ngOnInit() {
     
-    
+    if(!localStorage.getItem('hremail'))
+    {
+         this.router.navigateByUrl('/login');
+         
+    }
 
+this.email=localStorage.getItem('hremail');
 
   }
 
