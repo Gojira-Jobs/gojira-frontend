@@ -7,6 +7,7 @@ import {User} from "../models/user";
 @Injectable()
 export class UserService {
 
+    private signoutEdnpoint = "/user/auth/signout";
     private loginEndPoint = "/authenticate";
     private registerEndpoint = "/register";
     private userEndpoint = "/user";
@@ -42,6 +43,7 @@ export class UserService {
     }
 
     public setAuth(user: User) {
+        console.log(JSON.stringify(user));
         //save token into local storage
         this.jwtService.saveToken(user.token);
 
@@ -62,12 +64,15 @@ export class UserService {
     public purgeAuth() {
         console.log('purging auth');
         //delete token from into local storage
+        this.apiService.post(this.signoutEdnpoint, {email: this.currentUserSubject.getValue().email})
+            .map(data => data.json());
         this.jwtService.destroyToken();
 
         //set current user into empty object
         this.currentUserSubject.next(new User());
         localStorage.clear();
         this.isAuthenticatedSubject.next(false);
+
     }
 
     public isLoggedIn(): Observable<boolean> {

@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
                 },
                 err => {
                     this.userService.purgeAuth();
-                    this.error = err.msg;
+                    this.error = err.err;
                     this.isSubmitting = false;
                 });
     }

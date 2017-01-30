@@ -7,20 +7,22 @@ import {ApiService} from "../shared/services/api.service";
 
 @Injectable()
 export class ProfileService {
-currentUser: User;
+    currentUser: User;
 
 
-constructor( private userService : UserService, private apiService: ApiService){}
+    constructor(private userService: UserService, private apiService: ApiService) {
+    }
 
 getDetails()
 {
-  return this.userService.getCurrentUser()
+    return this.userService.getCurrentUser()
             
 }
 
 postDetails(user : User){
-    this.apiService.put("/user",user)
+    this.apiService.put("/user", user)
         .map(data =>
-        JSON.stringify(data)).subscribe(data=>{});
+            JSON.stringify(data)).subscribe(data => {
+    });
 } 
 }

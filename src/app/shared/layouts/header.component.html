@@ -8,11 +8,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">Gojira Jobs</a>
+            <a class="navbar-brand" [routerLink]="['findjob']">Gojira Jobs</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                <li><a [routerLink]="['/hr/postjob']">Post Job</a></li>
                 <li><a [routerLink]="['findjob']">Find Job</a></li>
                 <li><a [routerLink]="['aboutus']">About Us</a></li>
             </ul>
@@ -26,9 +27,6 @@
                 <li><a [routerLink]="['profile']">View Profile</a></li>
                 <li><a (click)="logout()">Logout</a></li>
 
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a [routerLink]="['/hr/postjob']">Post Job</a></li>
             </ul>
         </div>
     </div>

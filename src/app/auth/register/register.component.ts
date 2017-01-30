@@ -41,9 +41,10 @@ export class RegisterComponent {
             .subscribe(data => {
                 //set login using new data
                 this.userService.setAuth(data);
+
                 this.router.navigateByUrl('/profile/edit');
             }, err => {
-                this.error = err.msg;
+                this.error = err.err;
                 this.isSubmitting = false;
             });
     }
