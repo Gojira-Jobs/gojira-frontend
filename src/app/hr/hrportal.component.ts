@@ -6,17 +6,19 @@ import {Router} from "@angular/router";
   templateUrl: './hrportal.component.html'
 })
 export class HrportalComponent implements OnInit {
-tmp:boolean;
+email:string;
   constructor(private router :Router) { }
 
   ngOnInit() {
     
-    /**if(this.tmp   == false)
+    if(!localStorage.getItem('hremail'))
     {
-      this.router.navigateByUrl('login');
+         this.router.navigateByUrl('/login');
+         
+    }
 
+this.email=localStorage.getItem('hremail');
 
-    }*/
   }
 
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Observable} from "rxjs";
 import {UserService} from "../services/user.service";
+import {NgForm} from "@angular/forms";
 import {User} from "../models/user";
 import {Router} from "@angular/router";
 
@@ -12,12 +13,15 @@ export class HeaderComponent implements OnInit {
 
     loggedIn: Observable<boolean>;
     currentUser: User;
-
-    constructor(private userService: UserService, private router: Router) {
+     loggedInHr : Observable<boolean>;
+    
+    constructor(private userService: UserService,private router:Router) {
     }
 
     ngOnInit() {
         this.userService.populate();
+this.loggedInHr=this.userService.isHrLoggedIn();/**.subscribe(data=>console.log('hellopapa'+data));*/
+      
         this.loggedIn = this.userService.isLoggedIn();
 
         this.userService.getCurrentUser()
@@ -30,6 +34,7 @@ export class HeaderComponent implements OnInit {
     logout() {
 
         this.userService.purgeAuth();
-        this.router.navigate(['profile']);
+        this.router.navigateByUrl('login');
+        localStorage.clear();
     }
 }

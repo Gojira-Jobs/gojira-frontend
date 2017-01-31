@@ -14,7 +14,8 @@ export class UserService {
 
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
-
+    private isAuthenticatedHr = new BehaviorSubject<boolean>(false);
+     
     constructor(private apiService: ApiService,
                 private jwtService: JwtService) {
     }
@@ -38,6 +39,7 @@ export class UserService {
         return this.apiService.post(this.loginEndPoint, credentials)
             .map(res => {
                 this.setAuth(res.data);
+                //console.log(Json);
                 return res.data;
             });
     }
@@ -49,6 +51,11 @@ export class UserService {
 
         //set current user into observable
         this.currentUserSubject.next(user);
+                console.log(user.ishr+"user service");
+        if(user.ishr){
+        this.isAuthenticatedHr.next(true);
+        console.log(user.ishr+"user service");
+        }
         localStorage.setItem('email', user.email);
         // localStorage.setItem('user', user.name);
         this.isAuthenticatedSubject.next(true);
@@ -76,10 +83,15 @@ export class UserService {
 
     }
 
+
     public isLoggedIn(): Observable<boolean> {
         return this.isAuthenticatedSubject.asObservable();
     }
 
+     public isHrLoggedIn(): Observable<boolean> {
+         return this.isAuthenticatedHr.asObservable();
+    }
+    
     getCurrentUser(): Observable<User> {
         return this.currentUserSubject.asObservable();
     }
