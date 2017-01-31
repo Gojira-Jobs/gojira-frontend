@@ -10,11 +10,12 @@ export class UserService {
     private signoutEdnpoint = "/user/auth/signout";
     private loginEndPoint = "/authenticate";
     private registerEndpoint = "/register";
+    
     private userEndpoint = "/user";
 
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
-    private isAuthenticatedHr = new BehaviorSubject<boolean>(false);
+    private isAuthenticatedHr = new BehaviorSubject<boolean>(!!localStorage.getItem("hremail"));
      
     constructor(private apiService: ApiService,
                 private jwtService: JwtService) {

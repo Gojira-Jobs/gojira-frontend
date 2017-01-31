@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.userService.populate();
+     /**   this.userService.populate();*/
 this.loggedInHr=this.userService.isHrLoggedIn();/**.subscribe(data=>console.log('hellopapa'+data));*/
       
         this.loggedIn = this.userService.isLoggedIn();
