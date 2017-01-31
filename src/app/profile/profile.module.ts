@@ -5,8 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserdetailsComponent } from './userdetails.component';
 import {EditComponent} from './edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ProfilepicComponent } from './profilepic/profilepic.component';
-
+import {ProfileService} from './profile.service';
+import {UserService} from '../shared/services/user.service';
 
 
 
@@ -20,10 +20,6 @@ const APP_ROUTES:Routes=[
         {
             path:'edit',
             component:EditComponent
-        },
-        {
-            path:'profilepic',
-            component:ProfilepicComponent
         }
     ]
    
@@ -38,7 +34,8 @@ const APP_ROUTES:Routes=[
          FormsModule,
          ReactiveFormsModule
     ],
-    declarations: [ProfileComponent, UserdetailsComponent,EditComponent, ProfilepicComponent]
+    declarations: [ProfileComponent, UserdetailsComponent,EditComponent],
+    providers:[ProfileService, UserService]
 })
 export class ProfileModule {
 }

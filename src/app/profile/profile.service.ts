@@ -15,14 +15,14 @@ export class ProfileService {
 
 getDetails()
 {
-    return this.userService.getCurrentUser()
+    return this.userService.getCurrentUser();
             
 }
 
-postDetails(user : User){
-    this.apiService.put("/user/user", user)
-        .map(data =>
-            JSON.stringify(data)).subscribe(data => {
+postDetails(user){
+    return this.userService.update(user)
+    .map(data=>{
+    return data;
     });
 } 
 }

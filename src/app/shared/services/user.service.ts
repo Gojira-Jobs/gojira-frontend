@@ -65,8 +65,9 @@ export class UserService {
     public register(user: User) {
         return this.apiService.post(this.registerEndpoint, user)
             .map(data => {
+                console.log(data.data);
                 return data.data;
-            });
+            },err=>console.log("Error"));
     }
 
     public purgeAuth() {
@@ -95,4 +96,18 @@ export class UserService {
     getCurrentUser(): Observable<User> {
         return this.currentUserSubject.asObservable();
     }
+
+    public update(user): Observable<User> {
+        console.log("Inside update function");
+    return this.apiService
+    .put('/user/user', user)
+    .map(data => {
+      // Update the currentUser observable
+      console.log(data);
+      this.currentUserSubject.next(data.data);
+      return data.data;
+    });
+  }
+
+
 }

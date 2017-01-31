@@ -1,22 +1,10 @@
-import {Component, OnInit} from "@angular/core";
-import {ProfileService} from "./profile.service";
-import {User} from "../shared/models/user";
+import {Component} from "@angular/core";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  providers:[ProfileService] 
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
-    constructor(private profile: ProfileService) {
-    }
-
-    details: User;
-  ngOnInit() {
-      this.profile.getDetails().subscribe(user => {
-          this.details = user;
-          console.log(this.details);
-      });
-  }
+   
 }
