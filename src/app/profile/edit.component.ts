@@ -39,7 +39,11 @@ export class EditComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+     this.prf.getDetails().subscribe(data=>{
+      console.log("data from form");
+      console.log(data);
+      this.details=data;
+     });
   }
   load()
   {
