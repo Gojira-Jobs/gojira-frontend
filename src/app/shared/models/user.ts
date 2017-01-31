@@ -6,12 +6,11 @@ export class User {
     token: string;
     password: string;
     mobile: string;
-    isHr:boolean;
+    ishr:boolean;
     high_qual: string;
     high_qual_perc: number;
     pursuing_status: boolean;
     dob: Date;
-    hr: boolean;
     gender: string;
     resume: string;
     picture: string;

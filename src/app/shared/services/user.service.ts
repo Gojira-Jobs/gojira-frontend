@@ -39,6 +39,7 @@ export class UserService {
         return this.apiService.post(this.loginEndPoint, credentials)
             .map(res => {
                 this.setAuth(res.data);
+                //console.log(Json);
                 return res.data;
             });
     }
@@ -50,11 +51,11 @@ export class UserService {
 
         //set current user into observable
         this.currentUserSubject.next(user);
-  //              console.log(user.isHr+"user service");
-    //    if(user.isHr){
-      //  this.isAuthenticatedHr.next(true);
-       // console.log(user.isHr+"user service");
-        //}
+                console.log(user.ishr+"user service");
+        if(user.ishr){
+        this.isAuthenticatedHr.next(true);
+        console.log(user.ishr+"user service");
+        }
         localStorage.setItem('email', user.email);
         // localStorage.setItem('user', user.name);
         this.isAuthenticatedSubject.next(true);
