@@ -7,7 +7,7 @@ import {ApiService} from "../shared/services/api.service";
 
 @Injectable()
 export class ProfileService {
-    currentUser: User;
+    currentUser: User=<User>{};
 
 
     constructor(private userService: UserService, private apiService: ApiService) {
@@ -15,8 +15,7 @@ export class ProfileService {
 
 getDetails()
 {
-    return this.userService.getCurrentUser();
-            
+    return this.userService.getCurrentUser();           
 }
 
 postDetails(user){

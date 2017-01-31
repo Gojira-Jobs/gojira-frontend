@@ -20,10 +20,8 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         this.userService.populate();
-this.loggedInHr=this.userService.isHrLoggedIn();/**.subscribe(data=>console.log('hellopapa'+data));*/
-      
+        this.loggedInHr=this.userService.isHrLoggedIn();/**.subscribe(data=>console.log('hellopapa'+data));*/
         this.loggedIn = this.userService.isLoggedIn();
-
         this.userService.getCurrentUser()
             .subscribe(user => {
                 this.currentUser = user
@@ -35,6 +33,5 @@ this.loggedInHr=this.userService.isHrLoggedIn();/**.subscribe(data=>console.log(
 
         this.userService.purgeAuth();
         this.router.navigateByUrl('login');
-        localStorage.clear();
     }
 }

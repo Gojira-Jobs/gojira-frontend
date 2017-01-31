@@ -43,14 +43,13 @@ export class LoginComponent implements OnInit {
                  }
                 
                 else{
-                 this.router.navigateByUrl('/');
-            this.router.navigateByUrl('');
-            
+                 this.router.navigateByUrl('/');            
                 }
                 },
                 err => {
                     this.userService.purgeAuth();
                     this.error = err.err;
+                    console.log(this.error);
                     this.isSubmitting = false;
                 }); 
         
