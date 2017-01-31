@@ -30,5 +30,6 @@ export class HeaderComponent implements OnInit {
     logout() {
 
         this.userService.purgeAuth();
+        this.router.navigate(['profile']);
     }
 }

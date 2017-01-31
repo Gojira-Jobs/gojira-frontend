@@ -10,7 +10,10 @@ export class JobListingService {
 
     getAll() {
         return this.apiService.get('/joblisting')
-            .map(data => data.jobs);
+            .map(data => {
+            console.log(data.jobs);
+                return data.jobs;
+            });
     }
 
     applyJob() {

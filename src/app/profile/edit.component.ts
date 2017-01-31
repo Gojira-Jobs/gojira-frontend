@@ -14,9 +14,10 @@ export class EditComponent implements OnInit {
   details: User=<User>{};
   
   constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
-  	this.prf.getDetails().subscribe(data=>{
-      this.details= data;
-      this.details.address=<Address>{};
+    this.prf.getDetails().subscribe(data=>{
+      console.log("data from form");
+      console.log(data);
+      this.details=data;
     });
   	this.profileForm = fb.group({
 	  'name' : [this.details.name, Validators.required],
@@ -24,13 +25,13 @@ export class EditComponent implements OnInit {
     'pursuing' : [this.details.pursuing_status],
     'high_qual' : [this.details.high_qual, Validators.required],
     'dob' : [this.details.dob, Validators.required],
-    'mobile' : [this.details.mobile, Validators.required],
+    'phonenumber' : [this.details.phonenumber, Validators.required],
     'high_qual_perc' : [this.details.high_qual_perc, Validators.required],
     'gender': [this.details.gender, Validators.required],
-    'line' : [this.details.address.line, Validators.required],
-    'city' : [this.details.address.city, Validators.required],
-    'state' : [this.details.address.state, Validators.required],
-    'pincode' : [this.details.address.pincode, Validators.required],
+    'street' : [this.details.street, Validators.required],
+    'city' : [this.details.city, Validators.required],
+    'state' : [this.details.state, Validators.required],
+    'pincode' : [this.details.pincode, Validators.required],
     'resume' : [],
     'picture' :  []
 		});
@@ -41,11 +42,16 @@ export class EditComponent implements OnInit {
     
   }
   load()
-{
+  {
 	  this.details = this.profileForm.value;
-    this.prf.postDetails(this.details);
+    this.prf.postDetails(this.details).
+      subscribe(data=>{
+        console.log("data from Update");
+        console.log(data);
+        this.details=data;
+      });
   	this.router.navigate(['profile']);
-}
+  }
   
   
 

@@ -1,18 +1,19 @@
-import {Address} from "./address";
-
 export class User {
     name: string;
     email: string;
     token: string;
     password: string;
-    mobile: string;
+    phonenumber: string;
     high_qual: string;
     high_qual_perc: number;
     pursuing_status: boolean;
     dob: Date;
-    hr: boolean;
+    ishr: boolean;
     gender: string;
     resume: string;
     picture: string;
-    address: Address;
+    street: string;
+    city: string;
+    state: string;
+    pincode: string;
 }
