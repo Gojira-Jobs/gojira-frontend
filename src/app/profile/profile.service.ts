@@ -20,7 +20,7 @@ getDetails()
 }
 
 postDetails(user : User){
-    this.apiService.put("/user", user)
+    this.apiService.put("/user/user", user)
         .map(data =>
             JSON.stringify(data)).subscribe(data => {
     });

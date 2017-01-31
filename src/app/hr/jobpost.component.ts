@@ -1,3 +1,4 @@
+import { FindjobModule } from '../findjob/findjob.module';
 import {Component,OnInit} from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators,NgForm} from "@angular/forms";
 import {Job} from '../shared/models/job';
@@ -17,14 +18,15 @@ export class JobComponent implements OnInit  {
    email:'',
    password:''
  };*/
+ email:string;
  val:boolean=false;
  obj:any;
  constructor(private postjob:ApiService,private router:Router){}
  job = new Job();
 ngOnInit()
 {
-  return 1;
-
+  
+ this.job.postedBy=localStorage.getItem('hremail');
 }
   onSubmit()
   {

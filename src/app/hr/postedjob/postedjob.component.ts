@@ -7,7 +7,7 @@ import {Job} from "../../shared/models/job";
     templateUrl: 'postedjob.component.html'
 })
 export class PostedjobComponent implements OnInit {
-
+email:string;
 postedjob:Job[];
 
   constructor(private getjob:ApiService) { }
@@ -17,6 +17,7 @@ if(!localStorage.getItem("hremail"))
 {
   return 1;
 }
+
 this.getjob.get("/hr/postedJobs",new URLSearchParams('email='+localStorage.getItem('hremail')))
 .subscribe(
  data=>{

@@ -59,6 +59,7 @@ export class UserService {
         localStorage.setItem('email', user.email);
         // localStorage.setItem('user', user.name);
         this.isAuthenticatedSubject.next(true);
+
     }
 
     public register(user: User) {
@@ -71,15 +72,15 @@ export class UserService {
     public purgeAuth() {
         console.log('purging auth');
         //delete token from into local storage
-        this.apiService.post(this.signoutEdnpoint, {email: this.currentUserSubject.getValue().email})
-            .map(data => data.json());
+  /**      this.apiService.post(this.signoutEdnpoint, {email: this.currentUserSubject.getValue().email})
+            .map(data => data.json());*/
         this.jwtService.destroyToken();
 
         //set current user into empty object
         this.currentUserSubject.next(new User());
         localStorage.clear();
         this.isAuthenticatedSubject.next(false);
-
+        this.isAuthenticatedHr.next(false);
     }
 
 

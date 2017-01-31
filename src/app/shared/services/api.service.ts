@@ -18,7 +18,7 @@ export class ApiService {
         };
         if (this.jwtService.getToken()) {
             headersConfig['Token'] = `${this.jwtService.getToken()}`;
-            headersConfig['email'] = `${localStorage.getItem('email')}`;
+            headersConfig['email'] = `${localStorage.getItem('email') || localStorage.getItem('hremail')}`;
         }
         return new Headers(headersConfig);
     }

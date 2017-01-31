@@ -15,8 +15,5 @@ export class JwtService {
         localStorage.removeItem('jwtToken');
     }
 
-    getHr():string{
-        return localStorage.getItem('Hremail');
-    }
-
+    
 }
