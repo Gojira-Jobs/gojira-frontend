@@ -34,18 +34,17 @@ export class LoginComponent implements OnInit {
        
         this.userService.login(credentials)
             .subscribe(data => {
-                 if(this.loginForm.value.isHr==true)
-                {
-                    localStorage.setItem('hremail',data.email);
-                this.router.navigateByUrl('hr');
-                
                 console.log(data);
+                 if(data.isHr==true)
+                {
+                    localStorage.setItem('hremail',data.data.user.email);
+                    this.router.navigateByUrl('hr');
+                    console.log("HR Login");
+                    console.log(data);
                  }
                 
                 else{
-                 this.router.navigateByUrl('/');
-            
-            
+                 this.router.navigateByUrl('/');            
                 }
                 },
                 err => {

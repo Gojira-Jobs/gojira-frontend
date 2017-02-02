@@ -12,7 +12,6 @@ export class UserService {
     private registerEndpoint = "/register";
     
     private userEndpoint = "/user";
-
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
     private isAuthenticatedHr = new BehaviorSubject<boolean>(!!localStorage.getItem("hremail"));
@@ -28,8 +27,10 @@ export class UserService {
         if (this.jwtService.getToken()) {
             this.apiService.get(this.userEndpoint)
                 .subscribe(
-                    res => this.setAuth(res.data),
-                    err => this.purgeAuth());
+                    res => {
+                    this.setAuth(res.data)},
+                    err => {
+                        this.purgeAuth();});
         } else {
             // Remove any potential remnants of previous auth states
             this.purgeAuth();
@@ -39,26 +40,22 @@ export class UserService {
     login(credentials: User) {
         return this.apiService.post(this.loginEndPoint, credentials)
             .map(res => {
-                this.setAuth(res.data);
-                //console.log(Json);
-                return res.data;
+                this.setAuth(res);
+                return res;
             });
     }
 
     public setAuth(user: User) {
-        console.log(JSON.stringify(user));
         //save token into local storage
         this.jwtService.saveToken(user.token);
 
         //set current user into observable
         this.currentUserSubject.next(user);
-                console.log(user.ishr+"user service");
-        if(user.ishr){
+        if(user.isHr){
         this.isAuthenticatedHr.next(true);
-        console.log(user.ishr+"user service");
         }
         localStorage.setItem('email', user.email);
-        // localStorage.setItem('user', user.name);
+        //localStorage.setItem('user', JSON.stringify(user));
         this.isAuthenticatedSubject.next(true);
 
     }
@@ -101,7 +98,7 @@ export class UserService {
     public update(user): Observable<User> {
         console.log("Inside update function");
     return this.apiService
-    .put('/user/user', user)
+    .put('/user', user)
     .map(data => {
       // Update the currentUser observable
       console.log(data);
@@ -109,6 +106,4 @@ export class UserService {
       return data.data;
     });
   }
-
-
 }

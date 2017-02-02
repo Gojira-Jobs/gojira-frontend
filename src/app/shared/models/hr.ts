@@ -1,9 +1,6 @@
 export class HrProfile
 {
-    userid:string;
+    email:string;
     password:string;
     name:string;
-    
-
-
 }

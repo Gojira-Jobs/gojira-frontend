@@ -9,31 +9,53 @@ import {Job} from "../../shared/models/job";
 export class PostedjobComponent implements OnInit {
 email:string;
 postedjob:Job[];
+applicants:Applicant[];
+public visible:boolean=false;
+private visibleAnimate = false;
 
   constructor(private getjob:ApiService) { }
 
   ngOnInit() {
 if(!localStorage.getItem("hremail"))
-{
-  return 1;
-}
+  {  return 1;}
 
 this.getjob.get("/hr/postedJobs",new URLSearchParams('email='+localStorage.getItem('hremail')))
 .subscribe(
  data=>{
     this.postedjob=data.docs
-    
    },
  err=>{
    alert('having problem');
+ });
+}
 
- }
-
-
-);
-
-
-
+viewapply(jobid: String){
+  
+    this.getjob.get("/apply",new  URLSearchParams('job_id='+jobid))
+    .subscribe(data=>
+    {
+      console.log(data);
+      this.applicants=data.jobs;
+      //console.log(this.applicants);
+      this.show();
+    });
   }
 
+   public show(): void {
+        
+        this.visible = true;
+        setTimeout(() => this.visibleAnimate = true);
+    }
+
+    public hide(): void {
+        this.visibleAnimate = false;
+        setTimeout(() => this.visible = false, 300);
+    }
+
+
+}
+
+export class Applicant{
+  _id:string;
+  email:string;
 }

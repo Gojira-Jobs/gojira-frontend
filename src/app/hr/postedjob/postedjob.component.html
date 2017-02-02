@@ -22,9 +22,33 @@
     <div class="col-sm-6">
     Last Date of Apply:</div>
     <div class="col-sm-6">{{val.last_date}}</div>
-    </div> 
-  
-  
+    <button type="button" class="btn btn-primary pull-right" (click)="viewapply(val.job_id)" >View Applications</button>
+    </div>
  <hr>
  
 </div>
+
+
+<div (click)="hide()" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+       [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         <div class="app-modal-header">
+           <h3>Applications for this Job</h3>
+    </div>
+        </div>
+        <div class="modal-body">
+           <div class="app-modal-body">
+      <h5 *ngFor="let applicant of applicants">{{applicant.email}} </h5>
+    </div>
+        </div>
+        <div class="modal-footer">
+          <div class="app-modal-footer">
+      <button type="button" class="btn btn-default" (click)="hide()">Close</button>
+      
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>

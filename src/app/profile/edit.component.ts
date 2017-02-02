@@ -3,7 +3,6 @@ import {ProfileService} from './profile.service';
 import {Router} from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { User } from '../shared/models/user';
-import { Address } from '../shared/models/address';
 import { Input } from '@angular/core';
 @Component({
   selector: 'app-edit',
@@ -39,7 +38,11 @@ export class EditComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+     this.prf.getDetails().subscribe(data=>{
+      console.log("data from form");
+      console.log(data);
+      this.details=data;
+     });
   }
   load()
   {

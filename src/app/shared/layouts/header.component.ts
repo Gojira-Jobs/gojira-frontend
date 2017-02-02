@@ -20,18 +20,19 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-     /**   this.userService.populate();*/
-this.loggedInHr=this.userService.isHrLoggedIn();/**.subscribe(data=>console.log('hellopapa'+data));*/
-      
+        if(!localStorage.getItem("hremail")){
+            console.log('if violation');
+            this.userService.populate();
+        }
+        this.loggedInHr=this.userService.isHrLoggedIn();/**.subscribe(data=>console.log('hellopapa'+data));*/
         this.loggedIn = this.userService.isLoggedIn();
-
         this.userService.getCurrentUser()
             .subscribe(user => {
                 this.currentUser = user
             });
     }
-   
-    
+
+
     logout() {
      if(localStorage.getItem('hremail'))
      {      
