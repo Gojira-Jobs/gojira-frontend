@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { User } from '../shared/models/user';
 import { Input } from '@angular/core';
+import {UserService} from '../shared/services/user.service';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html'
@@ -11,14 +12,33 @@ import { Input } from '@angular/core';
 export class EditComponent implements OnInit {
 	profileForm : FormGroup;
   details: User=<User>{};
-  
-  constructor(private prf:ProfileService, private router:Router, fb: FormBuilder) {
+  newDate: Date;
+  dt:any;
+  year: any;
+  month: any;
+  date: any;
+  tmp: any;
+  constructor(private prf:ProfileService, 
+  private router:Router,
+  private fb: FormBuilder, 
+  private userService: UserService) {}
+
+  ngOnInit() {
+    this.userService.populate();
     this.prf.getDetails().subscribe(data=>{
-      console.log("data from form");
-      console.log(data);
-      this.details=data;
-    });
-  	this.profileForm = fb.group({
+    this.details=data;
+    this.date=new Date(this.details.dob);
+    this.year=this.date.getFullYear();
+    this.month=this.date.getMonth()+1;
+    this.dt=this.date.getDate();
+    if (this.dt < 10) {
+        this.dt = '0' + this.dt;
+    }
+    if (this.month < 10) {
+        this.month = '0' + this.month;
+    }
+    this.details.dob=this.tmp=this.year+'-'+this.month+'-'+this.dt;
+    this.profileForm = this.fb.group({
 	  'name' : [this.details.name, Validators.required],
 	  'email' : [this.details.email, Validators.required],
     'pursuing' : [this.details.pursuing_status],
@@ -34,28 +54,15 @@ export class EditComponent implements OnInit {
     'resume' : [],
     'picture' :  []
 		});
-
-   }
-
-  ngOnInit() {
-     this.prf.getDetails().subscribe(data=>{
-      console.log("data from form");
-      console.log(data);
-      this.details=data;
-     });
+    });
   }
   load()
   {
 	  this.details = this.profileForm.value;
     this.prf.postDetails(this.details).
       subscribe(data=>{
-        console.log("data from Update");
-        console.log(data);
         this.details=data;
       });
   	this.router.navigate(['profile']);
   }
-  
-  
-
 }

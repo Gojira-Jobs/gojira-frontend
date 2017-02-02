@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         if(!localStorage.getItem("hremail")){
-            console.log('if violation');
             this.userService.populate();
         }
         this.loggedInHr=this.userService.isHrLoggedIn();/**.subscribe(data=>console.log('hellopapa'+data));*/

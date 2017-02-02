@@ -27,20 +27,15 @@ export class LoginComponent implements OnInit {
 
     onLogin() {
         let credentials = this.loginForm.value;
-        console.log(this.loginForm.value.isHr);
         this.isSubmitting = true;
 
-        console.log(credentials);
        
         this.userService.login(credentials)
             .subscribe(data => {
-                console.log(data);
                  if(data.isHr==true)
                 {
                     localStorage.setItem('hremail',data.data.user.email);
                     this.router.navigateByUrl('hr');
-                    console.log("HR Login");
-                    console.log(data);
                  }
                 
                 else{

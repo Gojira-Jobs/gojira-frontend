@@ -32,7 +32,7 @@ export class ApiService {
             headers: this.setHeaders(),
             search: params
         }).catch(this.formatErrors).map((res: Response) => {
-            console.log(res.json());
+            //console.log(res.json());
             return res.json();
         });
     }
@@ -44,7 +44,7 @@ export class ApiService {
             {headers: this.setHeaders()}
         ).catch(this.formatErrors)
             .map((res: Response) => {
-                console.log(res.json());
+                //console.log(res.json());
                 return res.json();
             });
     }

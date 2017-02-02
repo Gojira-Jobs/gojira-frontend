@@ -38,7 +38,6 @@ ngOnInit(){
                if(element.job_id==el.job_id)
                this.job.push(element);
              });
-             console.log(this.job);
         });
         });
           });

@@ -34,9 +34,7 @@ viewapply(jobid: String){
     this.getjob.get("/apply",new  URLSearchParams('job_id='+jobid))
     .subscribe(data=>
     {
-      console.log(data);
       this.applicants=data.jobs;
-      //console.log(this.applicants);
       this.show();
     });
   }
