@@ -1,3 +1,4 @@
+import { FindjobModule } from '../findjob/findjob.module';
 import {Component,OnInit} from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators,NgForm} from "@angular/forms";
 import {Job} from '../shared/models/job';
@@ -17,23 +18,35 @@ export class JobComponent implements OnInit  {
    email:'',
    password:''
  };*/
+ email:string;
  val:boolean=false;
  obj:any;
  constructor(private postjob:ApiService,private router:Router){}
  job = new Job();
 ngOnInit()
 {
-  return 1;
-
+  if(!localStorage.getItem('hremail'))
+  {
+    this.router.navigate(['../../login']);
+    console.log(localStorage.getItem('hremail')+'ppp');
+    return(1);
+  }
+  
+ this.job.postedBy=localStorage.getItem('hremail');
 }
   onSubmit()
   {
+    if(!localStorage.getItem('hremail'))
+    {
+      alert('you are not logged in! please log in to post a job');
+      window.close();
+    }
     
  console.log(JSON.stringify(this.job.Joining));
     this.postjob.post("/joblisting",this.job).subscribe(data=>{
         this.val= true},
       err=>{
-        alert('having some issue! please try again');
+        alert('remote server error');
       }  
       );
     

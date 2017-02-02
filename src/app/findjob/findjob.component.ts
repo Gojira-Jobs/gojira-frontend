@@ -1,6 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {Job} from "../shared/models/job";
 import {JobListingService} from "../shared/services/jobListing.service";
+import {URLSearchParams} from "@angular/http";
+import {ApiService} from "../shared/services/api.service";
+import {Router} from "@angular/router";
 
 
 //import {jobsList} from '.\app\findjob\jobs';
@@ -18,19 +21,45 @@ export class FindjobComponent implements OnInit {
     public visible = false;
     private visibleAnimate = false;
     selectedJob: Job;
+    appliedJobs: AppliedJob[]=[];
+    appJob:String[]=[];
+    hidden:boolean=false;
 
-    constructor(private jobList: JobListingService) {
+    constructor(private jobList: JobListingService, private apiService: ApiService, private route: Router) {
     }
+
 
   ngOnInit() {
       this.jobList.getAll()
           .subscribe(jobs => {
               this.job = jobs;
           });
-  }
+        
+        this.apiService.get('/applied', new URLSearchParams('email='+localStorage.getItem('email')))
+        .subscribe(data=>{
+            this.appliedJobs=data.jobs;
+            this.appliedJobs.forEach(element => {
+            this.appJob.push(element.job_id);
+            console.log(this.appJob);
+        });
+        });
+        console.log(this.appliedJobs);
 
-    apply() {
-        this.jobList.applyJob();
+        
+
+        
+  }
+    apply(job: Job) {
+        if(!localStorage.getItem("email"))
+ {
+     alert("Login before Apply");
+   this.route.navigateByUrl('/login');
+ }
+ if(!!localStorage.getItem("email"))
+ {
+     this.jobList.applyJob(job);
+ }
+        
     }
 
 
@@ -50,4 +79,9 @@ export class FindjobComponent implements OnInit {
      }*/
 
 
+}
+
+export class AppliedJob{
+  _id:string;
+  job_id:string;
 }

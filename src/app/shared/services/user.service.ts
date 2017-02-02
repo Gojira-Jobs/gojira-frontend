@@ -10,10 +10,11 @@ export class UserService {
     private signoutEdnpoint = "/user/auth/signout";
     private loginEndPoint = "/authenticate";
     private registerEndpoint = "/register";
+    
     private userEndpoint = "/user";
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
-    private isAuthenticatedHr = new BehaviorSubject<boolean>(false);
+    private isAuthenticatedHr = new BehaviorSubject<boolean>(!!localStorage.getItem("hremail"));
      
     constructor(private apiService: ApiService,
                 private jwtService: JwtService) {
@@ -56,6 +57,7 @@ export class UserService {
         localStorage.setItem('email', user.email);
         //localStorage.setItem('user', JSON.stringify(user));
         this.isAuthenticatedSubject.next(true);
+
     }
 
     public register(user: User) {
@@ -69,15 +71,15 @@ export class UserService {
     public purgeAuth() {
         console.log('purging auth');
         //delete token from into local storage
-        this.apiService.post(this.signoutEdnpoint, {email: this.currentUserSubject.getValue().email})
-            .map(data => data.json());
+  /**      this.apiService.post(this.signoutEdnpoint, {email: this.currentUserSubject.getValue().email})
+            .map(data => data.json());*/
         this.jwtService.destroyToken();
 
         //set current user into empty object
         this.currentUserSubject.next(new User());
         localStorage.clear();
         this.isAuthenticatedSubject.next(false);
-
+        this.isAuthenticatedHr.next(false);
     }
 
 
@@ -104,6 +106,4 @@ export class UserService {
       return data.data;
     });
   }
-
-
 }

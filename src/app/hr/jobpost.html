@@ -51,9 +51,9 @@
     </div>
      <div class="form-group">
       <label for="pwd">Post By:</label>
-      <input type="text" class="form-control" [(ngModel)]="job.postedBy" name="postedBy" placeholder="Post By">
+      <input type="text" class="form-control" [(ngModel)]="job.postedBy" name="postedBy" placeholder="Post By" value="{{email}}">
     </div>
     
-    <button type="submit" class="btn btn-default" [disabled]="!f.valid">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
   </form>
  
