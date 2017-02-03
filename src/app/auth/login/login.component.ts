@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
             .subscribe(data => {
                  if(data.isHr==true)
                 {
-                    localStorage.setItem('hremail',data.data.user.email);
+                    console.log(data);
+                    localStorage.setItem('hremail',data.data.email);
                     this.router.navigateByUrl('hr');
                  }
                 

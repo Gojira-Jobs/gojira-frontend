@@ -19,6 +19,7 @@ getDetails()
 }
 
 postDetails(user){
+    console.log(user);
     return this.userService.update(user)
     .map(data=>{
     return data;

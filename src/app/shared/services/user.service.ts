@@ -47,6 +47,7 @@ export class UserService {
 
     public setAuth(user: User) {
         //save token into local storage
+        console.log(user);
         this.jwtService.saveToken(user.token);
 
         //set current user into observable
@@ -54,7 +55,11 @@ export class UserService {
         if(user.isHr){
         this.isAuthenticatedHr.next(true);
         }
-        localStorage.setItem('email', user.email);
+        else{
+            localStorage.setItem('email', user.email);
+            
+        }
+        
         //localStorage.setItem('user', JSON.stringify(user));
         this.isAuthenticatedSubject.next(true);
 

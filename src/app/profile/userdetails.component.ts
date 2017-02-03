@@ -5,25 +5,18 @@ import {UserService} from "../shared/services/user.service";
 import { DateFormatter } from "gb-date-formatter";
 import { DatePipe } from '@angular/common';
 
+
 @Component({
   selector: 'app-userdetails',
-  template:`
-  <span class="w3-right w3-opacity glyphicon glyphicon-pencil"><a [routerLink]="['edit']">Edit</a></span>
-                <h4>Personal Details</h4><br>
-                
-                <hr class="w3-clear">
-                <h6>Candidate Name : {{details?.name}} </h6>
-                <h6>Date of Birth : {{details?.dob}} </h6>
-                <h6>Gender : {{details.gender}} </h6> 
-                <h6>Email Id : {{details.email}} </h6>
-                <h6>Contact no : {{details.phonenumber}} </h6>
-                <hr class="w3-clear">
-  
-  `
+  templateUrl:'./userdetails.component.html'
 })
 export class UserdetailsComponent implements OnInit {
 
-    constructor(private profile: ProfileService, private userService: UserService, private datePipe: DatePipe) {
+    constructor(
+      private profile: ProfileService, 
+      private userService: UserService, 
+      private datePipe: DatePipe
+      ) {
     }
      date: any;
     details: User;
@@ -32,6 +25,9 @@ export class UserdetailsComponent implements OnInit {
     month: any;
     dt: any;
     tmp: any;
+
+
+
   ngOnInit() {
     this.userService.populate();
     this.profile.getDetails().subscribe(data => {
@@ -48,5 +44,8 @@ export class UserdetailsComponent implements OnInit {
     }
     this.details.dob=this.tmp=this.year+'-'+this.month+'-'+this.dt;
     });
+
+
+
   }
 }

@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProfileService} from './profile.service';
 import {UserService} from '../shared/services/user.service';
 import { DatePipe } from '@angular/common';
+import { UserjobsComponent } from './userjobs.component';
 
 
 
@@ -35,7 +36,7 @@ const APP_ROUTES:Routes=[
          FormsModule,
          ReactiveFormsModule
     ],
-    declarations: [ProfileComponent, UserdetailsComponent,EditComponent],
+    declarations: [ProfileComponent, UserdetailsComponent,EditComponent, UserjobsComponent],
     providers:[ProfileService, UserService, DatePipe]
 })
 export class ProfileModule {
