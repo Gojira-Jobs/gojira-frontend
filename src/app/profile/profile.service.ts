@@ -25,4 +25,5 @@ postDetails(user){
     return data;
     });
 } 
+
 }

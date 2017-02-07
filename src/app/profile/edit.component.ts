@@ -51,8 +51,6 @@ export class EditComponent implements OnInit {
     'city' : [this.details.city, Validators.required],
     'state' : [this.details.state, Validators.required],
     'pincode' : [this.details.pincode, Validators.required],
-    'resume' : [],
-    'picture' :  []
 		});
     });
   }
