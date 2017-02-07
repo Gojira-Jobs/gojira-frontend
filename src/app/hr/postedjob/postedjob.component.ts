@@ -35,6 +35,7 @@ viewapply(jobid: String){
     .subscribe(data=>
     {
       this.applicants=data.jobs;
+      console.log(this.applicants);
       this.show();
     });
   }
@@ -49,8 +50,6 @@ viewapply(jobid: String){
         this.visibleAnimate = false;
         setTimeout(() => this.visible = false, 300);
     }
-
-
 }
 
 export class Applicant{

@@ -24,7 +24,8 @@ user:User;
       });
       let data ={
           "email":this.user.email,
-          "job_id":job.job_id
+          "job_id":job.job_id,
+          "resume":this.user.resume
       };
          this.apiService.post('/apply',data)
         .subscribe(res =>{
