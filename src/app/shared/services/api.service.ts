@@ -17,7 +17,7 @@ export class ApiService {
             'Accept': 'application/json'
         };
         if (this.jwtService.getToken()) {
-            headersConfig['Token'] = `${this.jwtService.getToken()}`;
+            headersConfig['token'] = `${this.jwtService.getToken()}`;
             headersConfig['email'] = `${localStorage.getItem('email') || localStorage.getItem('hremail')}`;
         }
         return new Headers(headersConfig);
@@ -32,7 +32,7 @@ export class ApiService {
             headers: this.setHeaders(),
             search: params
         }).catch(this.formatErrors).map((res: Response) => {
-            console.log(res.json());
+            //console.log(res.json());
             return res.json();
         });
     }
@@ -44,7 +44,7 @@ export class ApiService {
             {headers: this.setHeaders()}
         ).catch(this.formatErrors)
             .map((res: Response) => {
-                console.log(res.json());
+                //console.log(res.json());
                 return res.json();
             });
     }

@@ -1,57 +1,134 @@
-import {Component, OnInit} from "@angular/core";
-import {URLSearchParams} from "@angular/http";
-import {ApiService} from "../shared/services/api.service";
-import {JobListingService} from "../shared/services/jobListing.service";
-import {Job} from "../shared/models/job";
-import {Router} from "@angular/router";
+import {Component, OnInit, ViewChild} from "@angular/core";
+import {ProfileService} from "./profile.service";
+import {Router,ActivatedRoute} from "@angular/router";
+import {UserService} from "../shared/services/user.service";
+import {User} from "../shared/models/user";
+import {ScriptService} from '../shared/services/script.service';
+import {Observable} from 'rxjs';
+declare var filepicker: any;
+
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(private apiService: ApiService, private jobList: JobListingService, private route: Router){
+var : any;
+//src: string;
+filePickerKey: any = 'Ap8ETk3FYQOlT98dMyXpNz';
+public visible = false;
+    private visibleAnimate = false;
+  constructor( private route: Router,private router:ActivatedRoute, private userService: UserService, private profile: ProfileService, private scriptService: ScriptService){
 
   }
 
-   appliedJobs: AppliedJob[]=[];
-    appJob:Job[]=[];
-    jobs: Job[] = [];
-    job:Job[]=[];
-
+details: User;
+@ViewChild('image')
+image;
 ngOnInit(){
+  
+ 
  if(!localStorage.getItem("email"))
  {
    this.route.navigateByUrl('/login');
  }
-  this.jobList.getAll()
-          .subscribe(jobs => {
-              this.jobs = jobs;
 
-
-              this.apiService.get('/applied', new URLSearchParams('email='+localStorage.getItem('email')))
-        .subscribe(data=>{
-            this.appliedJobs=data.jobs;
-            this.jobs.forEach(element => {
-             this.appliedJobs.forEach(el=>{
-               if(element.job_id==el.job_id)
-               this.job.push(element);
-             });
-             console.log(this.job);
+ this.scriptService.load('filepicker')
+        .then((data) => {
+          console.log('Scripts Loaded', data);
+          this.scriptService.load('link')
+            .then((data) => {
+              console.log('Scripts Loaded', data);
+            })
+            .catch((error) => {
+              //any error
+            });
+        })
+        .catch((error) => {
+          //any error
         });
-        });
-          });
-        
-        
 
+ this.userService.populate();
+    this.profile.getDetails().subscribe(data => {
+    this.details = data;
+    if(this.details.picture==null){
+      this.image.nativeElement.src="/assets/images/avatar3.png";
+    }
+    console.log(this.details);
+    });
 }
    
+upload() {
+    filepicker.setKey(this.filePickerKey);
+    var options = { mimetypes: ['image/*'],
+    container: 'modal',
+    services: ['COMPUTER', 'FACEBOOK', 'INSTAGRAM', 'GOOGLE_DRIVE', 'DROPBOX', 'CONVERT'],
+    conversions: ['crop', 'rotate', 'filter'],
+    cropRatio: 1,
+    cropForce: true };
+    filepicker.pick(
+      options,
+      (InkBlob: any) => {
+        console.log(InkBlob);
+        this.details.picture=InkBlob.url;
+        this.profile.postDetails(this.details).
+          subscribe(data=>{
+          this.details = data;
+          console.log('world',this.image);
+         this.image.nativeElement.src=data.picture;
+    });
+
+   // this.ngOnInit();
+      },
+      (FPError: any) => {
+        console.log(FPError.toString());
+      }
+    );
+  }
+
+
+    public show(){
+        
+        this.visible = true;
+        setTimeout(() => this.visibleAnimate = true);
+    }
+
+    public hide(): void {
+        this.visibleAnimate = false;
+        setTimeout(() => this.visible = false, 300);
+    }
+
+    uploadResume(){
+      filepicker.setKey(this.filePickerKey);
+    var options = { extension: '.pdf',
+    container: 'modal',
+    services: ['COMPUTER'] };
+    filepicker.pick(
+      options,
+      (InkBlob: any) => {
+        console.log(InkBlob);
+        this.details.resume=InkBlob.url;
+        this.profile.postDetails(this.details).
+          subscribe(data=>{
+          this.details = data;
+          console.log(data);
+    });
+
+   // this.ngOnInit();
+      },
+      (FPError: any) => {
+        console.log(FPError.toString());
+      }
+    );
+    }
+
+    downloadResume(){
+      window.open(this.details.resume);
+    }
+
+
 }
 
 
 
-export class AppliedJob{
-  _id:string;
-  job_id:string;
-}
+

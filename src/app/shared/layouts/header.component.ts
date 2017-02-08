@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         if(!localStorage.getItem("hremail")){
-            console.log('if violation');
             this.userService.populate();
         }
         this.loggedInHr=this.userService.isHrLoggedIn();/**.subscribe(data=>console.log('hellopapa'+data));*/
@@ -35,17 +34,20 @@ export class HeaderComponent implements OnInit {
 
     logout() {
      if(localStorage.getItem('hremail'))
-     {      
-        this.api.post("/admin/auth/signout").subscribe(data=>console.log(data));
+     {  
+        console.log("Inside admin logout");
+        this.api.post("/admin/auth/signout",{"email":localStorage.getItem('hremail')}).subscribe(data=>console.log(data));
      }
         else if(localStorage.getItem('email'))
         {
-            this.api.post("/user/auth/signout").subscribe(data=>console.log(data));
+            console.log("Inside user logout");
+            this.api.post("/user/auth/signout",{"email":localStorage.getItem('email')}).subscribe(data=>console.log(data));
 
         }
         this.userService.purgeAuth();
-        this.router.navigateByUrl('login');
         localStorage.clear();
+        this.router.navigateByUrl('login');
+        
 
     }
 }

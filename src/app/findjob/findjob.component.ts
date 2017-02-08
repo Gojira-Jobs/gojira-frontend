@@ -41,10 +41,8 @@ export class FindjobComponent implements OnInit {
             this.appliedJobs=data.jobs;
             this.appliedJobs.forEach(element => {
             this.appJob.push(element.job_id);
-            console.log(this.appJob);
         });
         });
-        console.log(this.appliedJobs);
 
         
 
@@ -74,10 +72,6 @@ export class FindjobComponent implements OnInit {
         this.visibleAnimate = false;
         setTimeout(() => this.visible = false, 300);
     }
-
-    /*search(){
-     console.log(this.listFilter);
-     }*/
 
 
 }

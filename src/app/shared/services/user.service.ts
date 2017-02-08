@@ -47,6 +47,7 @@ export class UserService {
 
     public setAuth(user: User) {
         //save token into local storage
+        console.log(user);
         this.jwtService.saveToken(user.token);
 
         //set current user into observable
@@ -54,7 +55,11 @@ export class UserService {
         if(user.isHr){
         this.isAuthenticatedHr.next(true);
         }
-        localStorage.setItem('email', user.email);
+        else{
+            localStorage.setItem('email', user.email);
+            
+        }
+        
         //localStorage.setItem('user', JSON.stringify(user));
         this.isAuthenticatedSubject.next(true);
 
@@ -63,7 +68,6 @@ export class UserService {
     public register(user: User) {
         return this.apiService.post(this.registerEndpoint, user)
             .map(data => {
-                console.log(data.data);
                 return data.data;
             },err=>console.log("Error"));
     }
@@ -96,12 +100,10 @@ export class UserService {
     }
 
     public update(user): Observable<User> {
-        console.log("Inside update function");
     return this.apiService
     .put('/user', user)
     .map(data => {
       // Update the currentUser observable
-      console.log(data);
       this.currentUserSubject.next(data.data);
       return data.data;
     });

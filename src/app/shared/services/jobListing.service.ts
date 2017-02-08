@@ -14,7 +14,6 @@ user:User;
     getAll() {
         return this.apiService.get('/joblisting')
             .map(data => {
-            console.log(data.jobs);
                 return data.jobs;
             });
     }
@@ -23,21 +22,16 @@ user:User;
         this.profileService.getDetails().subscribe(data => {
           this.user = data;
       });
-      //console.log(job);
-      //console.log(this.user);
       let data ={
           "email":this.user.email,
-          "job_id":job.job_id
+          "job_id":job.job_id,
+          "resume":this.user.resume
       };
-      //let body=JSON.stringify(data);
-      console.log(data);
          this.apiService.post('/apply',data)
         .subscribe(res =>{
-            console.log(res);
              alert("Applied Successfully");
         },
         err=>{
-            console.log(err);
             alert("Already applied");
         });
     }

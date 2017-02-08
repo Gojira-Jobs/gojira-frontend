@@ -12,12 +12,6 @@ import {Router} from '@angular/router';
     }
 )
 export class JobComponent implements OnInit  {
-    
-/** user={
-   username:'',
-   email:'',
-   password:''
- };*/
  email:string;
  val:boolean=false;
  obj:any;
@@ -28,7 +22,6 @@ ngOnInit()
   if(!localStorage.getItem('hremail'))
   {
     this.router.navigate(['../../login']);
-    console.log(localStorage.getItem('hremail')+'ppp');
     return(1);
   }
   
@@ -42,7 +35,6 @@ ngOnInit()
       window.close();
     }
     
- console.log(JSON.stringify(this.job.Joining));
     this.postjob.post("/joblisting",this.job).subscribe(data=>{
         this.val= true},
       err=>{

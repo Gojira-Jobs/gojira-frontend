@@ -40,12 +40,10 @@ export class RegisterComponent {
          this.userService.register(this.user)
             .subscribe(data => {
                 //set login using new data
-                console.log(data);
                 this.userService.setAuth(data);
 
                 this.router.navigateByUrl('/profile/edit');
             }, err => {
-                console.log(err);
                 this.error = err.err;
                 this.isSubmitting = false;
             });
