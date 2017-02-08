@@ -13,8 +13,6 @@ export class ProfileView implements OnInit
     ngOnInit()
     {
         console.log(this.rout.snapshot.params['id']);
-
-
     }
 
 }

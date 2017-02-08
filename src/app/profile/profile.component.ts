@@ -27,7 +27,7 @@ details: User;
 image;
 ngOnInit(){
   
- 
+
  if(!localStorage.getItem("email"))
  {
    this.route.navigateByUrl('/login');
