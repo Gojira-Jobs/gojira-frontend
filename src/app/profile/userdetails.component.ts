@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import {ProfileService} from "./profile.service";
 import {User} from "../shared/models/user";
 import {UserService} from "../shared/services/user.service";
-import { DateFormatter } from "gb-date-formatter";
 import { DatePipe } from '@angular/common';
 
 

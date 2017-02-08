@@ -17,6 +17,7 @@ import {Router} from "@angular/router";
 })
 export class FindjobComponent implements OnInit {
     job: Job[] = [];
+    jobid:string="job1";
     listFilter: string;
     public visible = false;
     private visibleAnimate = false;

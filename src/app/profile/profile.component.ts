@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {ProfileService} from "./profile.service";
-import {Router} from "@angular/router";
+import {Router,ActivatedRoute} from "@angular/router";
 import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/user";
 import {ScriptService} from '../shared/services/script.service';
@@ -13,12 +13,12 @@ declare var filepicker: any;
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-
+var : any;
 //src: string;
 filePickerKey: any = 'Ap8ETk3FYQOlT98dMyXpNz';
 public visible = false;
     private visibleAnimate = false;
-  constructor( private route: Router, private userService: UserService, private profile: ProfileService, private scriptService: ScriptService){
+  constructor( private route: Router,private router:ActivatedRoute, private userService: UserService, private profile: ProfileService, private scriptService: ScriptService){
 
   }
 
@@ -26,6 +26,8 @@ details: User;
 @ViewChild('image')
 image;
 ngOnInit(){
+  
+ 
  if(!localStorage.getItem("email"))
  {
    this.route.navigateByUrl('/login');

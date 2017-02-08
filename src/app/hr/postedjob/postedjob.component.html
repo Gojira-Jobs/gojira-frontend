@@ -47,7 +47,7 @@
                </tr>
                <tr *ngFor="let applicant of applicants">
                     <td>
-                      <h5>{{applicant.email}} </h5>
+                      <h5><a [routerLink]="['userview',applicant.email]">{{applicant.email}}</a> </h5>
                     </td>
                     <td>
                       <a href={{applicant.resume}} download={{applicant.email}}>Download Resume</a>

@@ -5,6 +5,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {JobComponent} from "./jobpost.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PostedjobComponent} from "./postedjob/postedjob.component";
+import {ProfileView} from "./userview/profileview.component";
 const HR_ROUTES: Routes = [
     {
         path: 'hr', component: HrportalComponent,
@@ -15,6 +16,9 @@ const HR_ROUTES: Routes = [
             },
             {
                 path: 'postjob', component: JobComponent
+            },
+            {
+                path:'userview/:id',component:ProfileView
             }
         ]
 
@@ -29,7 +33,7 @@ const HR_ROUTES: Routes = [
         FormsModule, ReactiveFormsModule
 
     ],
-    declarations: [HrportalComponent, JobComponent, PostedjobComponent]
+    declarations: [HrportalComponent, JobComponent, PostedjobComponent,ProfileView]
 })
 export class HrModule {
 }
