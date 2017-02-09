@@ -20,6 +20,7 @@ const HR_ROUTES: Routes = [
             {
                 path:'userview/:id',component:ProfileView
             }
+            
         ]
 
     }
@@ -33,6 +34,7 @@ const HR_ROUTES: Routes = [
         FormsModule, ReactiveFormsModule
 
     ],
+    
     declarations: [HrportalComponent, JobComponent, PostedjobComponent,ProfileView]
 })
 export class HrModule {

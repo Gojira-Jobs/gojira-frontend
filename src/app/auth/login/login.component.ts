@@ -2,7 +2,7 @@ import {Component, OnInit,Output,EventEmitter} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
-
+declare var $;
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -22,10 +22,14 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() {  
+   }
 
     onLogin() {
+        $(document).ready(function(){
+        alert('jquery used');
+    });
+    			
         let credentials = this.loginForm.value;
         this.isSubmitting = true;
 

@@ -10,15 +10,16 @@ import {UserService} from '../shared/services/user.service';
 import { DatePipe } from '@angular/common';
 import { UserjobsComponent } from './userjobs.component';
 import { ScriptService } from '../shared/services/script.service';
-
+import {AuthGuard} from '../auth/auth.guard';
 
 
 const APP_ROUTES:Routes=[
-    {path:'profile',component:ProfileComponent,
+    {path:'profile',component:ProfileComponent, 
     children:[
         {
             path:'',
             component:UserdetailsComponent
+           
         },
         {
             path:'edit',

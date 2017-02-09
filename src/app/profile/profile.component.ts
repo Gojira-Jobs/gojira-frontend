@@ -28,10 +28,10 @@ image;
 ngOnInit(){
   
 
- if(!localStorage.getItem("email"))
+ /**if(!localStorage.getItem("email"))
  {
    this.route.navigateByUrl('/login');
- }
+ }*/
 
  this.scriptService.load('filepicker')
         .then((data) => {
