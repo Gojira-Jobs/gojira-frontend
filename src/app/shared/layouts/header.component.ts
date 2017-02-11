@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
      if(localStorage.getItem('hremail'))
      {  
         console.log("Inside admin logout");
-        this.api.post("/admin/auth/signout",{"email":localStorage.getItem('hremail')}).subscribe(data=>console.log(data));
+        this.api.post("/hr/signout",{"email":localStorage.getItem('hremail')}).subscribe(data=>console.log(data));
      }
         else if(localStorage.getItem('email'))
         {

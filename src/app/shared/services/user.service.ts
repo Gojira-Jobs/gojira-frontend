@@ -41,6 +41,7 @@ export class UserService {
         return this.apiService.post(this.loginEndPoint, credentials)
             .map(res => {
                 this.setAuth(res);
+                console.log(res);
                 return res;
             });
     }

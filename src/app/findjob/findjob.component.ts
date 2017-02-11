@@ -5,7 +5,6 @@ import {URLSearchParams} from "@angular/http";
 import {ApiService} from "../shared/services/api.service";
 import {Router} from "@angular/router";
 
-
 //import {jobsList} from '.\app\findjob\jobs';
 @Component({
   selector: 'app-findjob',
@@ -43,9 +42,6 @@ export class FindjobComponent implements OnInit {
             this.appJob.push(element.job_id);
         });
         });
-
-        
-
         
   }
     apply(job: Job) {
@@ -65,7 +61,7 @@ export class FindjobComponent implements OnInit {
     public show(job: Job): void {
         this.selectedJob = job;
         this.visible = true;
-        setTimeout(() => this.visibleAnimate = true);
+        setTimeout(() => this.visibleAnimate = true,300);
     }
 
     public hide(): void {

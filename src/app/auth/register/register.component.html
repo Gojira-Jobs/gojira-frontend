@@ -36,9 +36,10 @@
                            formControlName="password"
                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,}">
                     <div>
-                        <small id="passwordHelp" class="form-text text-muted">*Minimum 6 chracters(Alphabets,Numeric
+                        <small id="passwordHelp" class="form-text text-muted">
+                            <p *ngIf="!signupForm.controls.password.valid && signupForm.controls.password.touched">*Minimum 6 chracters(Alphabets,Numeric
                             digits,Special
-                            Symbols)
+                            Symbols)</p>
                         </small>
                     </div>
 
@@ -46,7 +47,7 @@
 
                     <input type="Password" class="form-control" id="confirmInputPassword" placeholder="Confirm Password"
                            formControlName="confirmPassword">
-                    <p *ngIf="signupForm.controls.confirmPassword.errors?.equalTo">Passwords don't match</p>
+                    <p *ngIf="signupForm.controls.confirmPassword.errors?.equalTo && !signupForm.controls.confirmPassword.pristine">Passwords don't match</p>
 
                 </div>
 

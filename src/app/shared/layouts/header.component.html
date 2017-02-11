@@ -26,12 +26,13 @@
             <ul *ngIf="(loggedIn | async)" class="nav navbar-nav navbar-right">
 
                 <li *ngIf="!(loggedInHr | async)" ><a [routerLink]="['profile']">View Profile</a></li>
+                <li><a [routerLink]="['changepass']">Change Password</a></li>
                 <li><a (click)="logout()">Logout</a></li>
 
             </ul>
            <ul *ngIf="(loggedInHr | async)" class="nav navbar-nav navbar-right">
 
-                <li><a [routerLink]="['../hr/postjob']">post Job</a>
+                <li><a [routerLink]="['../hr/postjob']">Post a Job</a>
 
             </ul>
            

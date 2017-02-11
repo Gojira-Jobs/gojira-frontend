@@ -6,6 +6,6 @@
                 <h6>Email Id : {{details?.email}} </h6>
                 <h6>Contact no : {{details?.phonenumber}} </h6>
                 <h6>Address : {{details?.street}}, {{details?.city}}, {{details?.state}} </h6>
-                <button type="submit" id="downRes">Download Resume</button>
+                <a href={{details?.resume}} download={{details?.email}}><button>Download Resume</button></a>
                 <hr class="w3-clear">
  
