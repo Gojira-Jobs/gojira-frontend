@@ -18,7 +18,7 @@ export class ChangePasswordComponent implements OnInit {
   passwordChangeForm: FormGroup;
   error: string;
   isSubmitting: boolean = false;
-  details: User;
+  details: any;
   newPass: string;
   passMatcher: PassHelper=<PassHelper>{};
   constructor(fb: FormBuilder, 
@@ -38,8 +38,12 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+     this.userService.populate();
       this.profile.getDetails().subscribe(data => {
-      this.details = data;
+      console.log(data);
+          this.isHr=data.isHr;
+          this.details=data;
+          console.log(this.isHr);
     });
     this.isSubmitting=false;
   }
@@ -49,8 +53,6 @@ export class ChangePasswordComponent implements OnInit {
       this.newPass=this.passwordChangeForm.value.newPassword;
       this.error=null;
       this.passMatcher.isHr=this.details.isHr;
-      this.passMatcher.email=this.details.email;
-      this.passMatcher.token=this.details.token;
       this.passMatcher.oldPass=this.passwordChangeForm.value.oldPassword;
       this.passwordService.matchPass(this.passMatcher)
       .subscribe(obj => {
@@ -74,7 +76,5 @@ export class ChangePasswordComponent implements OnInit {
 
 export class PassHelper {
   isHr: boolean;
-  email: string;
   oldPass: string;
-  token: string;
 }

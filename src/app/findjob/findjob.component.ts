@@ -34,7 +34,7 @@ export class FindjobComponent implements OnInit {
           .subscribe(jobs => {
               this.job = jobs;
           });
-        
+    if(localStorage.getItem("email")){
         this.apiService.get('/applied', new URLSearchParams('email='+localStorage.getItem('email')))
         .subscribe(data=>{
             this.appliedJobs=data.jobs;
@@ -42,7 +42,7 @@ export class FindjobComponent implements OnInit {
             this.appJob.push(element.job_id);
         });
         });
-        
+    }        
   }
     apply(job: Job) {
         if(!localStorage.getItem("email"))
