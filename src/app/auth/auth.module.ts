@@ -11,11 +11,11 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'login',
         component: LoginComponent,
-        canActivate : [AuthGuard]
+        
     }, {
         path: 'register',
         component: RegisterComponent,
-        canActivate: [AuthGuard]
+        
     }
 ]);
 

@@ -24,8 +24,14 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {  
    }
+   load()
+   {
+       alert('kkkk');
+     document.cookie="username=jhon";
+   }
 
     onLogin() {
+        console.log(document.cookie);
         $(document).ready(function(){
         alert('jquery used');
     });

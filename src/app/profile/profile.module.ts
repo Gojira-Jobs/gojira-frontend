@@ -1,3 +1,4 @@
+import { LoginComponent } from '../auth/login/login.component';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ProfileComponent} from "./profile.component";
@@ -14,8 +15,8 @@ import {AuthGuard} from '../auth/auth.guard';
 
 
 const APP_ROUTES:Routes=[
-    {path:'profile',component:ProfileComponent, 
-    children:[
+    {path:'profile',component:ProfileComponent, canActivate:[AuthGuard],
+        children:[
         {
             path:'',
             component:UserdetailsComponent
