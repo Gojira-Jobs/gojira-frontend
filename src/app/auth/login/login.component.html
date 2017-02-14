@@ -34,6 +34,38 @@
                 </fieldset>
             </fieldset>
         </form>
-        <a [routerLink]="['../forgotpass']">Forgot Password??</a>
+        <a (click)="show()">Forgot Password??</a>
     </div>
 </div>
+
+
+ <div class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+                 [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <span (click)="hide()" class="w3-hover-text-grey w3-closebtn" style="margin-right: 10px">
+                            <i class="fa fa-remove"></i>
+                            </span>
+                        <div class="modal-header">
+                            <div class="app-modal-header">
+                                        <h2>Enter your email</h2>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="app-modal-body">
+                                <input type="text" class="form-control" id="email"  [(ngModel)]="email" name="email" 
+                                placeholder="Enter your email here" #f>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="app-modal-footer">
+                                <button type="button" class="btn btn-primary" (click)="checkEmail()" >Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        
+    
