@@ -7,7 +7,6 @@ export class PasswordService {
     constructor(private apiService: ApiService){}
 
     matchPass(obj: PassHelper){
-        console.log(obj);
         return this.apiService.post('/matchpass', obj)
         .map(data => {
             console.log(data);
@@ -15,4 +14,7 @@ export class PasswordService {
         });
     }
     
+    forgotPass(email: string){
+        console.log(email);
+    }
 }
