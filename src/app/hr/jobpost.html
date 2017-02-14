@@ -12,7 +12,7 @@
     <div class="form-group">
       <label for="Catagory">Catagory</label>
       <select class="form-control" [(ngModel)]="job.category" name="category" >
-          <option>It</option>
+          <option>IT</option>
           <option>Maintainance</option>
           <option>Buisness Administration</option>
       </select>
@@ -51,7 +51,7 @@
     </div>
      <div class="form-group">
       <label for="pwd">Post By:</label>
-      <input type="text" class="form-control" [(ngModel)]="job.postedBy" name="postedBy" placeholder="Post By" value="{{email}}">
+      <input type="text" class="form-control" [(ngModel)]="job.postedBy" name="postedBy" placeholder="Post By" value="{{email}}" disabled="true">
     </div>
     
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>

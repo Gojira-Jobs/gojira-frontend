@@ -11,6 +11,7 @@ export class UserService {
     private loginEndPoint = "/authenticate";
     private registerEndpoint = "/register";
     
+    private hrEndpoint = "/hr";
     private userEndpoint = "/user";
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
@@ -25,14 +26,26 @@ export class UserService {
     populate() {
         // If JWT detected, attempt to get & store user's info
         if (this.jwtService.getToken()) {
-            this.apiService.get(this.userEndpoint)
+            if(!!localStorage.getItem('email')){
+                this.apiService.get(this.userEndpoint)
                 .subscribe(
                     res => {
                     this.setAuth(res.data)},
                     err => {
                         this.purgeAuth();});
+            }       
+            else if(!!localStorage.getItem('hremail')){
+                this.apiService.get(this.hrEndpoint)
+                .subscribe(
+                    res => {
+                    this.setAuth(res.data)},
+                    err => {
+                        this.purgeAuth();});
+            }
+            else{
+                this.purgeAuth();
+            }   
         } else {
-            // Remove any potential remnants of previous auth states
             this.purgeAuth();
         }
     }
@@ -41,6 +54,7 @@ export class UserService {
         return this.apiService.post(this.loginEndPoint, credentials)
             .map(res => {
                 this.setAuth(res);
+                console.log(res);
                 return res;
             });
     }
@@ -53,15 +67,16 @@ export class UserService {
         //set current user into observable
         this.currentUserSubject.next(user);
         if(user.isHr){
-        this.isAuthenticatedHr.next(true);
+            this.isAuthenticatedHr.next(true);
+            localStorage.setItem('hremail',user.email);
         }
         else{
             localStorage.setItem('email', user.email);
-            
+            this.isAuthenticatedSubject.next(true);
         }
         
         //localStorage.setItem('user', JSON.stringify(user));
-        this.isAuthenticatedSubject.next(true);
+        
 
     }
 
@@ -100,12 +115,24 @@ export class UserService {
     }
 
     public update(user): Observable<User> {
-    return this.apiService
-    .put('/user', user)
-    .map(data => {
-      // Update the currentUser observable
-      this.currentUserSubject.next(data.data);
-      return data.data;
-    });
+        console.log(user);
+        if(!user.isHr){
+            return this.apiService
+            .put('/user', user)
+            .map(data => {
+            // Update the currentUser observable
+            this.currentUserSubject.next(data.data);
+            return data.data;
+            });
+        }
+        else{
+            return this.apiService
+            .put('/hr', user)
+            .map(data => {
+            // Update the currentUser observable
+            this.currentUserSubject.next(data.data);
+            return data.data;
+            });
+        }
   }
 }

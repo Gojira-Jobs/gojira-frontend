@@ -35,7 +35,7 @@ ngOnInit()
       window.close();
     }
     
-    this.postjob.post("/joblisting",this.job).subscribe(data=>{
+    this.postjob.post("/hr/jobadd",this.job).subscribe(data=>{
         this.val= true},
       err=>{
         alert('remote server error');

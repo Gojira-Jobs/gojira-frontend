@@ -1,4 +1,3 @@
-import { LoginComponent } from '../auth/login/login.component';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ProfileComponent} from "./profile.component";
@@ -11,16 +10,15 @@ import {UserService} from '../shared/services/user.service';
 import { DatePipe } from '@angular/common';
 import { UserjobsComponent } from './userjobs.component';
 import { ScriptService } from '../shared/services/script.service';
-import {AuthGuard} from '../auth/auth.guard';
+
 
 
 const APP_ROUTES:Routes=[
-    {path:'profile',component:ProfileComponent, canActivate:[AuthGuard],
-        children:[
+    {path:'profile',component:ProfileComponent,
+    children:[
         {
             path:'',
             component:UserdetailsComponent
-           
         },
         {
             path:'edit',

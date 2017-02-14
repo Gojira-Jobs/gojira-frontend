@@ -27,15 +27,14 @@ details: User;
 image;
 ngOnInit(){
   
-
- /**if(!localStorage.getItem("email"))
+ 
+ if(!localStorage.getItem("email"))
  {
    this.route.navigateByUrl('/login');
- }*/
+ }
 
  this.scriptService.load('filepicker')
         .then((data) => {
-          console.log('Scripts Loaded', data);
           this.scriptService.load('link')
             .then((data) => {
               console.log('Scripts Loaded', data);
@@ -54,7 +53,6 @@ ngOnInit(){
     if(this.details.picture==null){
       this.image.nativeElement.src="/assets/images/avatar3.png";
     }
-    console.log(this.details);
     });
 }
    

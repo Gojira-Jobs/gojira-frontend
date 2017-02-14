@@ -20,7 +20,8 @@ export class RegisterComponent {
         let password = new FormControl('', Validators.compose([Validators.required,
             Validators.minLength(6)]));
         let confirmPassword = new FormControl('', CustomValidators.equalTo(password));
-
+        document.cookie="username=prahllad";
+        
         this.signupForm = fb.group({
             'name': [null, Validators.required],
             'email': [null, Validators.required],

@@ -31,7 +31,7 @@ this.getjob.get("/hr/postedJobs",new URLSearchParams('email='+localStorage.getIt
 
 viewapply(jobid: String){
   
-    this.getjob.get("/apply",new  URLSearchParams('job_id='+jobid))
+    this.getjob.get("/hr/applicants",new  URLSearchParams('job_id='+jobid))
     .subscribe(data=>
     {
       this.applicants=data.jobs;

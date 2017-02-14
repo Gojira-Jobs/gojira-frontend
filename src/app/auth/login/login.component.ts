@@ -2,7 +2,7 @@ import {Component, OnInit,Output,EventEmitter} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
-declare var $;
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -22,20 +22,10 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    ngOnInit() {  
-   }
-   load()
-   {
-       alert('kkkk');
-     document.cookie="username=jhon";
-   }
+    ngOnInit() {
+    }
 
     onLogin() {
-        console.log(document.cookie);
-        $(document).ready(function(){
-        alert('jquery used');
-    });
-    			
         let credentials = this.loginForm.value;
         this.isSubmitting = true;
 
@@ -44,8 +34,6 @@ export class LoginComponent implements OnInit {
             .subscribe(data => {
                  if(data.isHr==true)
                 {
-                    console.log(data);
-                    localStorage.setItem('hremail',data.data.email);
                     this.router.navigateByUrl('hr');
                  }
                 
