@@ -3,11 +3,16 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {FindjobComponent} from "./findjob.component";
 import {FormsModule} from "@angular/forms";
+import { EmailverificationComponent } from './emailverification/emailverification.component';
 
 const findjobRouting: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'findjob',
         component: FindjobComponent
+    },
+    {
+      path:'verifyemail',
+      component:EmailverificationComponent   
     }
 ]);
 
@@ -17,7 +22,7 @@ const findjobRouting: ModuleWithProviders = RouterModule.forChild([
         findjobRouting,
         FormsModule
     ],
-    declarations: [FindjobComponent]
+    declarations: [FindjobComponent, EmailverificationComponent]
 })
 export class FindjobModule {
 }

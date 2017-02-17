@@ -13,8 +13,7 @@ export class UserdetailsComponent implements OnInit {
 
     constructor(
       private profile: ProfileService, 
-      private userService: UserService, 
-      private datePipe: DatePipe
+      private userService: UserService
       ) {
     }
      date: any;

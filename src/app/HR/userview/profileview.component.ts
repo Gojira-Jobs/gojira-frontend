@@ -17,6 +17,7 @@ export class ProfileView implements OnInit
     ngOnInit()
     {
         console.log(this.rout.snapshot.params['id']);
+        
         this.applicantEmail=this.rout.snapshot.params['id'];
         this.apiService.get('/hr/userinfo', new URLSearchParams('email='+this.applicantEmail))
         .subscribe(data=>{

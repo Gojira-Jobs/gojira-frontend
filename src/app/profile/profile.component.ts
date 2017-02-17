@@ -1,37 +1,40 @@
+import { Subscription } from 'rxjs/Rx';
+import { subscribeOn } from 'rxjs/operator/subscribeOn';
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {ProfileService} from "./profile.service";
-import {Router,ActivatedRoute} from "@angular/router";
+import {Router,ActivatedRoute,RouterStateSnapshot} from "@angular/router";
 import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/user";
 import {ScriptService} from '../shared/services/script.service';
+import {URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs';
 declare var filepicker: any;
+declare var $;
 
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
-export class ProfileComponent implements OnInit {
-var : any;
+export class ProfileComponent implements OnInit{
 //src: string;
 filePickerKey: any = 'Ap8ETk3FYQOlT98dMyXpNz';
 public visible = false;
     private visibleAnimate = false;
   constructor( private route: Router,private router:ActivatedRoute, private userService: UserService, private profile: ProfileService, private scriptService: ScriptService){
-
+                    
   }
 
 details: User;
 @ViewChild('image')
 image;
 ngOnInit(){
-  
+
  
- if(!localStorage.getItem("email"))
+/** if(!localStorage.getItem("jwtToken"))
  {
    this.route.navigateByUrl('/login');
- }
+ }*/
 
  this.scriptService.load('filepicker')
         .then((data) => {
@@ -47,7 +50,7 @@ ngOnInit(){
           //any error
         });
 
- this.userService.populate();
+   this.userService.populate();
     this.profile.getDetails().subscribe(data => {
     this.details = data;
     if(this.details.picture==null){

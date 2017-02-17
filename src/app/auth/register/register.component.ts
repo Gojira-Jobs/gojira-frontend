@@ -41,9 +41,9 @@ export class RegisterComponent {
          this.userService.register(this.user)
             .subscribe(data => {
                 //set login using new data
-                this.userService.setAuth(data);
-
-                this.router.navigateByUrl('/profile/edit');
+                //this.userService.setAuth(data);
+                
+                this.router.navigateByUrl('/verifyemail?email='+this.user.email);
             }, err => {
                 this.error = err.err;
                 this.isSubmitting = false;

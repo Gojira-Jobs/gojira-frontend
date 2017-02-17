@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Alerts</h2>
+  <div class="alert alert-success">
+    <strong>Success!</strong> You have registered successfully.
+  </div>
+  <div class="alert alert-info">
+    <strong>Info!</strong> Please visit your email account to verify your Email:{{email}}  
+    <button (click)="send()" class="btn-success btn-warning " style="border-radius: 2%;">Resent verification email</button>
+  </div>
+  <div class="alert alert-warning" [hidden]="true">
+    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+  </div>
+  <div class="alert alert-danger" [hidden]="true">
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  </div>
+</div>

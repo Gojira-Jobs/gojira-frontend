@@ -3,7 +3,7 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
 import {PasswordService} from "../../password/password.service";
-
+declare var $;
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -30,6 +30,37 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        $("input").focus(function(){
+    $(this).css("background-color", "#e5f7ff");
+});
+
+$("input").blur(function(){
+    $(this).css("background-color", "#ffffff");
+});
+
+$("button").hover(function(){
+$(this).css("background-color", "#8421d1");
+    }, function(){
+    $(this).css("background-color", "#2164d1");
+});
+
+	 $('#select-tools').selectize({
+					maxItems: null,
+					valueField: 'id',
+					labelField: 'title',
+					searchField: 'title',
+					options: [
+						{id: 1, title: 'Cricket'},
+						{id: 2, title: 'Reading Nobel'},
+						{id: 3, title: 'Adventure'},
+                        {id: 4, title: 'Cricket'},
+						{id: 5, title: 'Reading Nobel'},
+						{id: 6, title: 'Adventure'}
+					],
+					create: false
+				});
+
+    
     }
 
     onLogin() {
@@ -45,6 +76,7 @@ export class LoginComponent implements OnInit {
                  }
                 
                 else{
+                    
                  this.router.navigateByUrl('/');            
                 }
                 },
