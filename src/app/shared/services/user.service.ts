@@ -7,12 +7,12 @@ import {User} from "../models/user";
 @Injectable()
 export class UserService {
 
-    private signoutEdnpoint = "/user/auth/signout";
-    private loginEndPoint = "/authenticate";
+    private signoutEdnpoint = "/signout";
+    private loginEndPoint = "/login";
     private registerEndpoint = "/register";
     
     private hrEndpoint = "/hr";
-    private userEndpoint = "/user";
+    private userEndpoint = "/";
     private currentUserSubject = new BehaviorSubject<User>(new User());
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!this.jwtService.getToken());
     private isAuthenticatedHr = new BehaviorSubject<boolean>(!!localStorage.getItem("hremail"));
@@ -69,6 +69,7 @@ export class UserService {
         if(user.isHr){
             this.isAuthenticatedHr.next(true);
             localStorage.setItem('hremail',user.email);
+        
         }
         else{
             localStorage.setItem('email', user.email);
@@ -118,7 +119,7 @@ export class UserService {
         console.log(user);
         if(!user.isHr){
             return this.apiService
-            .put('/user', user)
+            .put('/', user)
             .map(data => {
             // Update the currentUser observable
             this.currentUserSubject.next(data.data);

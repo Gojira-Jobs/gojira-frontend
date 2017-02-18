@@ -16,4 +16,5 @@ export class User {
     city: string;
     state: string;
     pincode: string;
+    verified: boolean;
 }

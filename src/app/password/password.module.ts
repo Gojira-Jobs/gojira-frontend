@@ -9,8 +9,14 @@ import {PasswordService} from "./password.service";
 
 
 const PASS_ROUTES:Routes=[
-    {path:'forgotpass',component:ForgotPasswordComponent},
-    {path:'changepass',component:ChangePasswordComponent}
+    {
+      path:'forgotpass',
+      component:ForgotPasswordComponent
+    },
+    {
+      path:'changepass',
+      component:ChangePasswordComponent
+    }
 ];
 
 @NgModule({

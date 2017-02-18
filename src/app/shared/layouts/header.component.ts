@@ -36,12 +36,12 @@ export class HeaderComponent implements OnInit {
      if(localStorage.getItem('hremail'))
      {  
         console.log("Inside admin logout");
-        this.api.post("/hr/signout",{"email":localStorage.getItem('hremail')}).subscribe(data=>console.log(data));
+        this.api.post("/asignout",{"email":localStorage.getItem('hremail')}).subscribe(data=>console.log(data));
      }
         else if(localStorage.getItem('email'))
         {
             console.log("Inside user logout");
-            this.api.post("/user/auth/signout",{"email":localStorage.getItem('email')}).subscribe(data=>console.log(data));
+            this.api.post("/signout",{"email":localStorage.getItem('email')}).subscribe(data=>console.log(data));
 
         }
         this.userService.purgeAuth();

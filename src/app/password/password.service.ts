@@ -14,7 +14,35 @@ export class PasswordService {
         });
     }
     
-    forgotPass(email: string){
-        console.log(email);
+    forgotPass(obj: any){
+        console.log(obj);
+        return this.apiService.post('/forgotPass',obj)
+        .map(data=>{
+            console.log(data);
+            return data;
+        },err=>{
+            console.log(err);
+            return err;
+        });
+    }
+
+    resetPassword(obj:any){
+        if(obj.isHr)
+        {
+        return this.apiService.post('/areset',obj)
+                        .map(res=>{
+                            return res;
+                        },err=>{
+                            return err;
+                        });
+        }
+        else{
+            return this.apiService.post('/reset',obj)
+                        .map(res=>{
+                            return res;
+                        },err=>{
+                            return err;
+                        });
+        }
     }
 }

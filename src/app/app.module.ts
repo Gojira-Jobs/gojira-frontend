@@ -17,7 +17,7 @@ import {JobListingService} from "./shared/services/jobListing.service";
 import {HrModule} from "./hr/hr.module";
 import {PasswordModule} from "./password/password.module";
 import {PasswordService} from "./password/password.service";
-
+import {CookieService} from "./shared/services/cookie.service";
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([
     {
@@ -49,7 +49,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([
         ApiService,
         JobListingService,
         JwtService,
-        PasswordService
+        PasswordService,
+        CookieService
     ]
 })
 export class AppModule {

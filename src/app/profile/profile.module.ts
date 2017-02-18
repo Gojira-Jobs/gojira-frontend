@@ -10,6 +10,7 @@ import {UserService} from '../shared/services/user.service';
 import { DatePipe } from '@angular/common';
 import { UserjobsComponent } from './userjobs.component';
 import { ScriptService } from '../shared/services/script.service';
+import { VerifyComponent } from './verify.component';
 
 
 
@@ -25,9 +26,11 @@ const APP_ROUTES:Routes=[
             component:EditComponent
         }
     ]
-   
-
-}
+    },
+    {
+        path:'verifyemail',
+        component:VerifyComponent   
+    }
 ];
 
 @NgModule({
@@ -37,7 +40,7 @@ const APP_ROUTES:Routes=[
          FormsModule,
          ReactiveFormsModule
     ],
-    declarations: [ProfileComponent, UserdetailsComponent,EditComponent, UserjobsComponent],
+    declarations: [ProfileComponent, UserdetailsComponent,EditComponent, UserjobsComponent, VerifyComponent],
     providers:[ProfileService, UserService, DatePipe, ScriptService]
 })
 export class ProfileModule {

@@ -16,9 +16,13 @@ export class ApiService {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         };
-        if (this.jwtService.getToken()) {
+        if (this.jwtService.getToken() && (localStorage.getItem('email') || localStorage.getItem('hremail'))) {
             headersConfig['token'] = `${this.jwtService.getToken()}`;
             headersConfig['email'] = `${localStorage.getItem('email') || localStorage.getItem('hremail')}`;
+        }
+        else
+        {
+            headersConfig['authheader']='hrportalgojirabackend-bprrsa@1234';
         }
         return new Headers(headersConfig);
     }
@@ -38,6 +42,7 @@ export class ApiService {
     }
 
     post(path: string, body: Object = {}): Observable<any> {
+        console.log(this.setHeaders());
         return this.http.post(
             `${environment.api_url}${path}`,
             JSON.stringify(body),
