@@ -20,7 +20,8 @@ export class RegisterComponent {
         let password = new FormControl('', Validators.compose([Validators.required,
             Validators.minLength(6)]));
         let confirmPassword = new FormControl('', CustomValidators.equalTo(password));
-
+        document.cookie="username=prahllad";
+        
         this.signupForm = fb.group({
             'name': [null, Validators.required],
             'email': [null, Validators.required],
@@ -40,9 +41,9 @@ export class RegisterComponent {
          this.userService.register(this.user)
             .subscribe(data => {
                 //set login using new data
-                this.userService.setAuth(data);
-
-                this.router.navigateByUrl('/profile/edit');
+                //this.userService.setAuth(data);
+                
+                this.router.navigateByUrl('/verifyemail?email='+this.user.email);
             }, err => {
                 this.error = err.err;
                 this.isSubmitting = false;

@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../shared/shared.module";
 import {AuthGuard} from "./auth.guard";
 import {PasswordModule} from "../password/password.module";
+import { ExternAuthComponent } from './extern-auth.component';
 
 const authRouting: ModuleWithProviders = RouterModule.forChild([
     {
@@ -17,6 +18,10 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
         path: 'register',
         component: RegisterComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'externauth',
+        component: ExternAuthComponent
     }
 ]);
 
@@ -30,7 +35,7 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
         PasswordModule
     ],
     providers : [AuthGuard],
-    declarations: [LoginComponent, RegisterComponent],
+    declarations: [LoginComponent, RegisterComponent, ExternAuthComponent],
     
 })
 export class AuthModule {
