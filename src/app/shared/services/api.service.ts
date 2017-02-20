@@ -17,11 +17,13 @@ export class ApiService {
             'Accept': 'application/json'
         };
         if (this.jwtService.getToken() && (localStorage.getItem('email') || localStorage.getItem('hremail'))) {
+            console.log("Setting token and email in header>>>>>>>>>>");
             headersConfig['token'] = `${this.jwtService.getToken()}`;
             headersConfig['email'] = `${localStorage.getItem('email') || localStorage.getItem('hremail')}`;
         }
         else
         {
+            console.log("Setting personalized auth header>>>>>>>");
             headersConfig['authheader']='hrportalgojirabackend-bprrsa@1234';
         }
         return new Headers(headersConfig);

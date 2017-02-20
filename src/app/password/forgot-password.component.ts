@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,ActivatedRoute, Params} from "@angular/router";
 import {JwtService} from "../shared/services/jwt.service";
-import {UserService} from "../shared/services/user.service";
-import {ApiService} from "../shared/services/api.service";
 import { Subscription } from 'rxjs/Rx';
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {CustomValidators} from "ng2-validation";
 import {PasswordService} from "./password.service";
+import {UserService} from "../shared/services/user.service";
 
 
 
@@ -27,10 +26,9 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(fb: FormBuilder,
               private route: Router,
-              private userService: UserService,
               private ActRouter : ActivatedRoute,
               private jwtService: JwtService,
-              private apiService: ApiService,
+              private userService : UserService,
               private passwordService: PasswordService) {
               let password = new FormControl('', Validators.compose([Validators.required,
                   Validators.minLength(6)]));
@@ -42,7 +40,7 @@ export class ForgotPasswordComponent implements OnInit {
                 }
 
   ngOnInit() {
-
+    this.isSubmitting=false;
     this.ActRouter.queryParams.subscribe((params: Params)=>{
       this.token=params['token'];
       this.email=params['email'];
@@ -51,11 +49,15 @@ export class ForgotPasswordComponent implements OnInit {
       console.log(this.token);
       console.log(this.isHr);
       localStorage.setItem('email', this.email);
+      console.log("Email Saved");
+      //localStorage.setItem('token', this.token);
       this.jwtService.saveToken(this.token);
+      console.log("Token saved");
     });
   }
 
   onReset(){
+    this.isSubmitting=true;
     console.log(this.resetForm.value.newPassword);
     console.log(this.isHr);
     console.log(localStorage.getItem('email'));
@@ -67,8 +69,18 @@ export class ForgotPasswordComponent implements OnInit {
     this.passwordService.resetPassword(obj)
                         .subscribe(data=>{
                           console.log(data);
+                          this.userService.purgeAuth();
+                          if(data.status){
+                            alert(data.data);
+                            this.route.navigateByUrl('/login');
+                          }
                         },err=>{
                             console.log(err);
+                            this.userService.purgeAuth();
+                            if(err.status){
+                            alert(err.err);
+                            this.route.navigateByUrl('/login');
+                          }
                         });
   }
 

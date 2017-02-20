@@ -13,13 +13,13 @@ export class AppComponent implements OnInit {
     }
     ngOnInit()
     {
-        localStorage.setItem('id','papai');
-        console.log(localStorage.getItem('id'));
-        $(window).bind('storage', function (e) {
+    //     localStorage.setItem('id','papai');
+    //     console.log(localStorage.getItem('id'));
+    //     $(window).bind('storage', function (e) {
     
-     localStorage.setItem(e.originalEvent.key, e.originalEvent.oldValue);
+    //  localStorage.setItem(e.originalEvent.key, e.originalEvent.oldValue);
      
- });
+// });
 
 
     }

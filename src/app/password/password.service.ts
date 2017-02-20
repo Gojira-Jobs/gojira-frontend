@@ -27,7 +27,8 @@ export class PasswordService {
     }
 
     resetPassword(obj:any){
-        if(obj.isHr)
+        console.log(obj);
+        if(obj.isHr=="true")
         {
         return this.apiService.post('/areset',obj)
                         .map(res=>{
@@ -36,7 +37,7 @@ export class PasswordService {
                             return err;
                         });
         }
-        else{
+        else if(obj.isHr=="false"){
             return this.apiService.post('/reset',obj)
                         .map(res=>{
                             return res;
