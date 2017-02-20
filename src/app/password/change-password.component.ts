@@ -62,6 +62,7 @@ export class ChangePasswordComponent implements OnInit {
         else{
            this.details=obj.user;
            this.isSubmitting=false;
+           this.passwordChangeForm.reset();
            this.error="Password changed successfully."
         }
         });

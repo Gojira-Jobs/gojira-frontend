@@ -16,8 +16,7 @@ export class ApiService {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         };
-        if (this.jwtService.getToken() && (localStorage.getItem('email') || localStorage.getItem('hremail'))) {
-            console.log("Setting token and email in header>>>>>>>>>>");
+        if (this.jwtService.getToken() && (localStorage.getItem('email')) || localStorage.getItem('hremail')) {
             headersConfig['token'] = `${this.jwtService.getToken()}`;
             headersConfig['email'] = `${localStorage.getItem('email') || localStorage.getItem('hremail')}`;
         }

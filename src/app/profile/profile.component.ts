@@ -4,8 +4,10 @@ import {Router,ActivatedRoute, Params} from "@angular/router";
 import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/user";
 import {ScriptService} from '../shared/services/script.service';
+import {URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs';
 declare var filepicker: any;
+declare var $;
 
 
 @Component({
@@ -33,6 +35,7 @@ details: User;
 image;
 ngOnInit(){
 
+ 
  if(!localStorage.getItem("email"))
  {
    this.route.navigateByUrl('/login');
