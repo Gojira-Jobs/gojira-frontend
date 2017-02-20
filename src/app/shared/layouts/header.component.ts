@@ -6,6 +6,7 @@ import {User} from "../models/user";
 import {Router} from "@angular/router";
 import {ApiService} from "../services/api.service";
 
+
 @Component({
     selector: 'layout-header',
     templateUrl: './header.component.html'
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
     loggedIn: Observable<boolean>;
     currentUser: User;
      loggedInHr : Observable<boolean>;
+     public isCollapsed = false;
     
     constructor(private userService: UserService,private router:Router,private api:ApiService) {
     }

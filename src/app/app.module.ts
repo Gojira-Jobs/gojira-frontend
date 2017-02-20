@@ -18,6 +18,7 @@ import {HrModule} from "./hr/hr.module";
 import {PasswordModule} from "./password/password.module";
 import {PasswordService} from "./password/password.service";
 import {CookieService} from "./shared/services/cookie.service";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([
     {
@@ -42,7 +43,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([
         rootRouting,
         ReactiveFormsModule,
         HrModule,
-        PasswordModule
+        PasswordModule,
+        NgbModule.forRoot()
     ],
     bootstrap: [AppComponent],
     providers: [UserService,
