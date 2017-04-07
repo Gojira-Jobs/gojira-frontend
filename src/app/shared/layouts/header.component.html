@@ -8,31 +8,31 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a  class="navbar-brand" [routerLink]="['findjob']">Gojira Jobs</a>
+            <a  class="navbar-brand" [routerLink]="['findjob']" (click)="isCollapsed = !isCollapsed">Gojira Jobs</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" [ngbCollapse]="!isCollapsed">
             <ul class="nav navbar-nav">
                 
-                <li *ngIf="!(loggedInHr | async)" ><a [routerLink]="['findjob']">Find Job</a></li>
-                <li *ngIf="(loggedInHr | async)" ><a [routerLink]="['hr']">Posted Jobs</a></li>
-                <li><a [routerLink]="['aboutus']">About Us</a></li>
+                <li *ngIf="!(loggedInHr | async)" ><a [routerLink]="['findjob']" (click)="isCollapsed = !isCollapsed">Find Job</a></li>
+                <li *ngIf="(loggedInHr | async)" ><a [routerLink]="['hr']" (click)="isCollapsed = !isCollapsed">Posted Jobs</a></li>
+                <li><a [routerLink]="['aboutus']" (click)="isCollapsed = !isCollapsed">About Us</a></li>
             </ul>
 
             <ul *ngIf="!(loggedIn | async) && !(loggedInHr | async)" class="nav navbar-nav navbar-right">
-                <li><a [routerLink]="['login']">Login</a></li>
-                <li><a [routerLink]="['register']">Sign-Up</a></li>
+                <li><a [routerLink]="['login']" (click)="isCollapsed = !isCollapsed">Login</a></li>
+                <li><a [routerLink]="['register']" (click)="isCollapsed = !isCollapsed">Sign-Up</a></li>
             </ul>
             <ul *ngIf="(loggedIn | async) || (loggedInHr | async)" class="nav navbar-nav navbar-right">
 
-                <li *ngIf="!(loggedInHr | async)" ><a [routerLink]="['profile']">View Profile</a></li>
-                <li><a [routerLink]="['changepass']">Change Password</a></li>
+                <li *ngIf="!(loggedInHr | async)" ><a [routerLink]="['profile']" (click)="isCollapsed = !isCollapsed">View Profile</a></li>
+                <li><a [routerLink]="['changepass']" (click)="isCollapsed = !isCollapsed">Change Password</a></li>
                 <li><a (click)="logout()">Logout</a></li>
 
             </ul>
            <ul *ngIf="(loggedInHr | async)" class="nav navbar-nav navbar-right">
 
-                <li><a [routerLink]="['../hr/postjob']">Post a Job</a>
+                <li><a [routerLink]="['../hr/postjob']" isCollapsed = !isCollapsed>Post a Job</a>
 
             </ul>
            

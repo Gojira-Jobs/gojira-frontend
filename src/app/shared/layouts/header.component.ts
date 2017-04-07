@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
 
 
     logout() {
+        this.isCollapsed = !this.isCollapsed;
      if(localStorage.getItem('hremail'))
      {  
         console.log("Inside admin logout");
